@@ -1,5 +1,8 @@
 #!/usr/bin/env fish
 
+echo -e "\033[0;36m-- Setting up man page completions --\e[0m"
+fish_update_completions
+
 echo -e "\033[0;36m-- Installing fisher --\e[0m"
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 
