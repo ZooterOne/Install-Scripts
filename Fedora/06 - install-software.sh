@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo -e "\033[0;36m-- Installing VLC --\e[0m"
+sudo dnf install vlc -y
+sudo dnf install ffmpeg libavcodec-freeworld --allowerasing -y
+
 echo -e "\033[0;36m-- Installing Alacritty --\e[0m"
 sudo dnf install alacritty -y
 mkdir ~/.config/alacritty
