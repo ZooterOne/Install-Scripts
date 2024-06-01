@@ -1,20 +1,24 @@
 #!/bin/bash
 
+source "00 - common-functions.sh"
+
 if [ $# -eq 1 ]
   then
-    echo -e "\033[0;36m-- Setting hostname --\e[0m"
+    startCommandGroup "Set hostname"
     sudo hostnamectl set-hostname $1
+    endCommandGroup "Set hostname"
 fi
 
-echo -e "\033[0;36m-- Setting dnf options --\e[0m"
+startCommandGroup "Set dnf options"
 echo "max_parallel_downloads=10" | sudo tee -a /etc/dnf/dnf.conf
+echo "countme=false" | sudo tee -a /etc/dnf/dnf.conf
+endCommandGroup "Set dnf options"
 
-echo -e "\033[0;36m-- Installing updates --\e[0m"
-sudo dnf upgrade -y
-
-echo -e "\033[0;36m-- Setting rpmfusion --\e[0m"
+startCommandGroup "Set rpmfusion"
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y --nogpgcheck
 sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y --nogpgcheck
+endCommandGroup "Set rpmfusion"
 
-echo -e "\033[0;36m-- Updating system --\e[0m"
-sudo dnf upgrade --refresh
+startCommandGroup "Update system"
+sudo dnf upgrade -y --refresh
+endCommandGroup "Update system"

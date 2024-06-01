@@ -1,10 +1,26 @@
 #!/usr/bin/env fish
 
-echo -e "\033[0;36m-- Setting up man page completions --\e[0m"
+function startCommandGroup
+    printf '\033[36m[****]\033[0m %s.\n' "$argv[1]"    
+end
+
+function endCommandGroup
+    if test "$status" -eq 0
+        printf '\033[32m[-OK-]\033[0m'
+    else
+        printf '\033[31m[FAIL]\033[0m'
+    end
+    printf ' %s.\n' "$argv[1]"
+end
+
+startCommandGroup "Setup man page completions"
 fish_update_completions
+endCommandGroup "Setup man page completions"
 
-echo -e "\033[0;36m-- Installing fisher --\e[0m"
+startCommandGroup "Install fisher"
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+endCommandGroup "Install fisher"
 
-echo -e "\033[0;36m-- Installing tide --\e[0m"
+startCommandGroup "Install tide"
 fisher install IlanCosman/tide@v6
+endCommandGroup "Install tide"

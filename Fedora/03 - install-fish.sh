@@ -1,7 +1,11 @@
 #!/bin/bash
 
-echo -e "\033[0;36m-- Installing fish --\e[0m"
-sudo dnf install util-linux-user fish -y
+source "00 - common-functions.sh"
 
-echo -e "\033[0;36m-- Setting fish as default --\e[0m"
+startCommandGroup "Install fish"
+sudo dnf install util-linux-user fish -y
+endCommandGroup "Install fish"
+
+startCommandGroup "Set fish as default"
 chsh -s $(which fish)
+endCommandGroup "Set fish as default"
