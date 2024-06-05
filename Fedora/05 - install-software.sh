@@ -3,8 +3,9 @@
 source "00 - common-functions.sh"
 
 startCommandGroup "Install VLC"
+sudo dnf install intel-media-driver -y
+sudo dnf swap ffmpeg-free ffmpeg --allowerasing -y
 sudo dnf install vlc -y
-sudo dnf install ffmpeg libavcodec-freeworld --allowerasing -y
 endCommandGroup "Install VLC"
 
 startCommandGroup "Install Alacritty"
