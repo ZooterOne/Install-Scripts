@@ -7,7 +7,7 @@ sudo dnf install gnome-extensions-app gnome-tweaks pop-icon-theme -y
 endCommandGroup "Install Gnome add-ons"
 
 startCommandGroup "Install Gnome extensions"
-sudo dnf install gnome-shell-extension-pop-shell gnome-shell-extension-apps-menu gnome-shell-extension-blur-my-shell -y
+sudo dnf install gnome-shell-extension-pop-shell gnome-shell-extension-blur-my-shell -y
 endCommandGroup "Install Gnome extensions"
 
 startCommandGroup "Setup Gnome interface"
@@ -39,7 +39,7 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
 endCommandGroup "Setup Gnome Touchpad"
 
 startCommandGroup "Setup Gnome extensions"
-gsettings set org.gnome.shell enabled-extensions "['apps-menu@gnome-shell-extensions.gcampax.github.com', 'background-logo@fedorahosted.org', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'pop-shell@system76.com', 'blur-my-shell@aunetx']"
+gsettings set org.gnome.shell enabled-extensions "['background-logo@fedorahosted.org', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'pop-shell@system76.com', 'blur-my-shell@aunetx']"
 gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'Alacritty.desktop', 'code.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']"
 gsettings set org.fedorahosted.background-logo-extension logo-always-visible true
 gsettings set org.fedorahosted.background-logo-extension logo-border 7

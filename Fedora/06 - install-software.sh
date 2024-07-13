@@ -8,6 +8,11 @@ firefox bitwarden_password_manager-2024.4.2.xpi
 rm bitwarden_password_manager-2024.4.2.xpi
 endCommandGroup "Install Bitwarden Firefox extension"
 
+startCommandGroup "Install HEIC support"
+sudo dnf install heif-pixbuf-loader
+sudo dnf install libheif-freeworld
+endCommandGroup "Install HEIC support"
+
 startCommandGroup "Install VLC"
 sudo dnf install intel-media-driver -y
 sudo dnf swap ffmpeg-free ffmpeg --allowerasing -y
