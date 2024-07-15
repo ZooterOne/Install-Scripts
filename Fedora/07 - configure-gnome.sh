@@ -22,7 +22,7 @@ endCommandGroup "Setup Gnome interface"
 startCommandGroup "Setup Gnome fonts"
 gsettings set org.gnome.desktop.interface document-font-name 'DaddyTimeMono Nerd Font 11'
 gsettings set org.gnome.desktop.interface font-name 'DaddyTimeMono Nerd Font 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'MesloLGS Nerd Font 10'
+gsettings set org.gnome.desktop.interface monospace-font-name 'DaddyTimeMono Nerd Font 10'
 gsettings set org.gnome.desktop.wm.preferences titlebar-font 'DaddyTimeMono Nerd Font Bold 11'
 endCommandGroup "Setup Gnome fonts"
 
