@@ -14,12 +14,6 @@ sudo unzip Hermit.zip -d /usr/share/fonts/Hurmit
 rm Hermit.zip
 endCommandGroup "Install Hurmit fonts"
 
-startCommandGroup "Install Victor fonts"
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/VictorMono.zip
-sudo unzip VictorMono.zip -d /usr/share/fonts/VictorMono
-rm VictorMono.zip
-endCommandGroup "Install Victor fonts"
-
 startCommandGroup "Install font cache"
 sudo fc-cache -fv
 endCommandGroup "Install font cache"

@@ -23,7 +23,7 @@ background = "0x1e1e1e"
 foreground = "0xd3d7cf"
 
 [font.normal]
-family = "VictorMono Nerd Font"
+family = "Hurmit Nerd Font"
 
 [window]
 opacity = 0.9
