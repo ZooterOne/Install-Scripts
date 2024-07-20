@@ -1,6 +1,11 @@
-![Install-Scripts](https://github.com/ZooterOne/Install-Scripts/assets/143575961/32bb4931-d42b-4d21-82c9-021b2ba8b4f9)
+<div align="center">
+    <img src="logo.png" alt="Install Scripts">
+</div>
+
+<h1 align="center">Install Scripts</h1>
 
 Various scripts and configuration files including:
   * Fedora additional installation & setup.
   * Alacritty setup.
+  * Visual Studio Code setup.
 
