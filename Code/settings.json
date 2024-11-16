@@ -1,3 +1,4 @@
 {
-    "editor.fontFamily": "'Hurmit Nerd Font', 'Droid Sans Mono', 'monospace', monospace"
+    "editor.fontFamily": "'Hurmit Nerd Font', 'Droid Sans Mono', 'monospace', monospace",
+    "workbench.colorTheme": "Monokai Dimmed"
 }
