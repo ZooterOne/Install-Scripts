@@ -3,11 +3,11 @@
 source "00 - common-functions.sh"
 
 startCommandGroup "Install .Net SDK"
-sudo dnf install dotnet-sdk-8.0
+sudo dnf install dotnet-sdk-8.0 -y
 endCommandGroup "Install .Net SDK"
 
 startCommandGroup "Install C++ environment"
-sudo dnf install gcc gcc-c++ gdb cmake clang autoconf automake
+sudo dnf install gcc gcc-c++ gdb cmake clang autoconf automake -y
 endCommandGroup "Install C++ environment"
 
 startCommandGroup "Install GitHub tool"
