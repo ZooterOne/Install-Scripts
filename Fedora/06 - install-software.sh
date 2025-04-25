@@ -2,11 +2,14 @@
 
 source "00 - common-functions.sh"
 
-startCommandGroup "Install Bitwarden Firefox extension"
-wget https://addons.mozilla.org/firefox/downloads/file/4282854/bitwarden_password_manager-2024.4.2.xpi
-firefox bitwarden_password_manager-2024.4.2.xpi
-rm bitwarden_password_manager-2024.4.2.xpi
-endCommandGroup "Install Bitwarden Firefox extension"
+startCommandGroup "Install Zen Browser"
+flatpak install app.zen_browser.zen
+endCommandGroup "Install Zen Browser"
+
+startCommandGroup "Install Bitwarden extension"
+firefox https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/
+flatpak run app.zen_browser.zen https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/
+endCommandGroup "Install Bitwarden extension"
 
 startCommandGroup "Install HEIC support"
 sudo dnf install heif-pixbuf-loader libheif-freeworld -y

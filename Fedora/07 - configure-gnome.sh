@@ -40,7 +40,7 @@ endCommandGroup "Setup Gnome Touchpad"
 
 startCommandGroup "Setup Gnome extensions"
 gsettings set org.gnome.shell enabled-extensions "['background-logo@fedorahosted.org', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'pop-shell@system76.com', 'blur-my-shell@aunetx']"
-gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'Alacritty.desktop', 'code.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']"
+gsettings set org.gnome.shell favorite-apps "['app.zen_browser.zen.desktop', 'Alacritty.desktop', 'code.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']"
 gsettings set org.fedorahosted.background-logo-extension logo-always-visible true
 gsettings set org.fedorahosted.background-logo-extension logo-border 7
 gsettings set org.fedorahosted.background-logo-extension logo-opacity 47
