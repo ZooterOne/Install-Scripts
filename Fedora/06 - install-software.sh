@@ -2,13 +2,15 @@
 
 source "00 - common-functions.sh"
 
-startCommandGroup "Install Zen Browser"
-flatpak install app.zen_browser.zen
-endCommandGroup "Install Zen Browser"
+#flatpak install flathub io.github.giantpinkrobots.flatsweep
+
+startCommandGroup "Install LibreWolf"
+flatpak install flathub io.gitlab.librewolf-community -y
+flatpak run io.gitlab.librewolf-community -about:preferences
+endCommandGroup "Install LibreWolf"
 
 startCommandGroup "Install Bitwarden extension"
-firefox https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/
-flatpak run app.zen_browser.zen https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/
+flatpak run io.gitlab.librewolf-community https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/
 endCommandGroup "Install Bitwarden extension"
 
 startCommandGroup "Install HEIC support"

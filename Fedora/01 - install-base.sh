@@ -19,6 +19,10 @@ sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-rele
 sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y --nogpgcheck
 endCommandGroup "Set rpmfusion"
 
+startCommandGroup "Setup Flathub"
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+endCommandGroup "Setup Flathub"
+
 startCommandGroup "Update system"
 sudo dnf upgrade -y --refresh
 endCommandGroup "Update system"
