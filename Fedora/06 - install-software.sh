@@ -6,6 +6,7 @@ source "00 - common-functions.sh"
 
 startCommandGroup "Install LibreWolf"
 flatpak install flathub io.gitlab.librewolf-community -y
+cp ../LibreWolf/ librewolf.overrides.cfg ~/.var/app/io.gitlab.librewolf-community/.librewolf/
 flatpak run io.gitlab.librewolf-community -about:preferences
 endCommandGroup "Install LibreWolf"
 
