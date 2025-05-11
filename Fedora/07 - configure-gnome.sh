@@ -47,3 +47,7 @@ gsettings set org.fedorahosted.background-logo-extension logo-opacity 47
 gsettings set org.fedorahosted.background-logo-extension logo-position 'bottom-right'
 gsettings set org.fedorahosted.background-logo-extension logo-size 6.096
 endCommandGroup "Setup Gnome extensions"
+
+startCommandGroup "Setup Gnome default apps"
+gnome-control-center applications
+endCommandGroup "Setup Gnome default apps"
