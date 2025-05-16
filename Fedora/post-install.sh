@@ -105,7 +105,7 @@ installSoftware()
   startCommandGroup "Install LibreWolf"
   flatpak install flathub io.gitlab.librewolf-community -y
   cp ../LibreWolf/ librewolf.overrides.cfg ~/.var/app/io.gitlab.librewolf-community/.librewolf/
-  flatpak run io.gitlab.librewolf-community -about:preferences
+  flatpak run io.gitlab.librewolf-community about:preferences
   endCommandGroup "Install LibreWolf"
 
   startCommandGroup "Install Bitwarden extension"
@@ -186,6 +186,7 @@ installDevEnvironment()
 {
   while true; do
     clear
+    echo -e "\e[35mFedora post-installation scripts.\e[0m"
     echo -e "Dev environment installation."
     PS3="Select an option to install: "
     options=("Github tool." \
@@ -230,15 +231,21 @@ installExtraSoftware()
 {
  while true; do
     clear
+    echo -e "\e[35mFedora post-installation scripts.\e[0m"
     echo -e "Extra software installation."
     PS3="Select an option to install: "
-    options=("Flatpak tools.")
+    options=("Flatpak tools." \
+      "Obsidian.")
     select option in "${options[@]}" "Back"; do
       case "$option" in
         "${options[0]}") startCommandGroup "Install Flatsweep & Flatseal";
                          flatpak install flathub io.github.giantpinkrobots.flatsweep -y;
                          flatpak install flathub com.github.tchx84.Flatseal -y;
                          endCommandGroup "Install Flatsweep & Flatseal";
+                         sleep 3; break;;
+        "${options[1]}") startCommandGroup "Install Obsidian";
+                         flatpak install flathub md.obsidian.Obsidian -y;
+                         endCommandGroup "Install Obsidian";
                          sleep 3; break;;
         "Back") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
