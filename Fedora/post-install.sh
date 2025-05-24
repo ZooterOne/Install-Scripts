@@ -83,6 +83,12 @@ installFish()
   sudo dnf install util-linux-user fish -y
   endCommandGroup "Install fish"
 
+  startCommandGroup "Install eza"
+  sudo dnf install eza -y
+  cp ../Eza/one_dark.yml ~/.config/eza/theme.yml
+  /usr/bin/fish -c "alias --save ls 'eza --icons -lh'"
+  endCommandGroup "Install eza"
+
   startCommandGroup "Set fish as default"
   chsh -s $(which fish)
   endCommandGroup "Set fish as default"
@@ -104,7 +110,7 @@ installSoftware()
 {
   startCommandGroup "Install LibreWolf"
   flatpak install flathub io.gitlab.librewolf-community -y
-  cp ../LibreWolf/ librewolf.overrides.cfg ~/.var/app/io.gitlab.librewolf-community/.librewolf/
+  cp ../LibreWolf/librewolf.overrides.cfg ~/.var/app/io.gitlab.librewolf-community/.librewolf/
   flatpak run io.gitlab.librewolf-community about:preferences
   endCommandGroup "Install LibreWolf"
 
