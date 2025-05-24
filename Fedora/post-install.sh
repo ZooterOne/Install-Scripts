@@ -84,7 +84,10 @@ installFish()
   endCommandGroup "Install fish"
 
   startCommandGroup "Install eza"
-  sudo dnf install eza -y
+  wget https://github.com/eza-community/eza/releases/download/v0.21.3/eza_x86_64-unknown-linux-gnu.zip
+  sudo unzip eza_x86_64-unknown-linux-gnu.zip -d /usr/local/bin/
+  rm eza_x86_64-unknown-linux-gnu.zip
+  mkdir ~/.config/eza
   cp ../Eza/one_dark.yml ~/.config/eza/theme.yml
   /usr/bin/fish -c "alias --save ls 'eza --icons -lh'"
   endCommandGroup "Install eza"
