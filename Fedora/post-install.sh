@@ -77,24 +77,11 @@ installFonts()
   endCommandGroup "Install font cache"
 }
 
-installFish()
+setupTerminal()
 {
   startCommandGroup "Install fish"
   sudo dnf install util-linux-user fish -y
   endCommandGroup "Install fish"
-
-  startCommandGroup "Install eza"
-  wget https://github.com/eza-community/eza/releases/download/v0.21.3/eza_x86_64-unknown-linux-gnu.zip
-  sudo unzip eza_x86_64-unknown-linux-gnu.zip -d /usr/local/bin/
-  rm eza_x86_64-unknown-linux-gnu.zip
-  mkdir ~/.config/eza
-  cp ../Eza/one_dark.yml ~/.config/eza/theme.yml
-  /usr/bin/fish -c "alias --save ls 'eza --icons -lh'"
-  endCommandGroup "Install eza"
-
-  startCommandGroup "Set fish as default"
-  chsh -s $(which fish)
-  endCommandGroup "Set fish as default"
 
   startCommandGroup "Setup man page completions"
   /usr/bin/fish -c fish_update_completions
@@ -107,6 +94,21 @@ installFish()
   startCommandGroup "Install tide"
   /usr/bin/fish -c 'fisher install IlanCosman/tide@v6'
   endCommandGroup "Install tide"
+
+  startCommandGroup "Install Alacritty"
+  sudo dnf install alacritty -y
+  mkdir ~/.config/alacritty
+  cp ../Alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
+  endCommandGroup "Install Alacritty"
+
+  startCommandGroup "Install eza"
+  wget https://github.com/eza-community/eza/releases/download/v0.21.3/eza_x86_64-unknown-linux-gnu.zip
+  sudo unzip eza_x86_64-unknown-linux-gnu.zip -d /usr/local/bin/
+  rm eza_x86_64-unknown-linux-gnu.zip
+  mkdir ~/.config/eza
+  cp ../Eza/one_dark.yml ~/.config/eza/theme.yml
+  /usr/bin/fish -c "alias --save ls 'eza --icons -lh'"
+  endCommandGroup "Install eza"
 }
 
 installSoftware()
@@ -130,12 +132,6 @@ installSoftware()
   sudo dnf swap ffmpeg-free ffmpeg --allowerasing -y
   sudo dnf install vlc -y
   endCommandGroup "Install VLC"
-
-  startCommandGroup "Install Alacritty"
-  sudo dnf install alacritty -y
-  mkdir ~/.config/alacritty
-  cp ../Alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
-  endCommandGroup "Install Alacritty"
 }
 
 configureGnome()
@@ -244,6 +240,7 @@ installExtraSoftware()
     echo -e "Extra software installation."
     PS3="Select an option to install: "
     options=("Flatpak tools." \
+      "Fastfetch."
       "Obsidian.")
     select option in "${options[@]}" "Back"; do
       case "$option" in
@@ -252,7 +249,14 @@ installExtraSoftware()
                          flatpak install flathub com.github.tchx84.Flatseal -y;
                          endCommandGroup "Install Flatsweep & Flatseal";
                          sleep 3; break;;
-        "${options[1]}") startCommandGroup "Install Obsidian";
+        "${options[1]}") startCommandGroup "Install Fastfetch";
+                         sudo dnf install fastfetch -y;
+                         mkdir ~/.config/fastfetch
+                         cp ../Fastfetch/config.jsonc ~/.config/fastfetch/
+                         cp ../Alacritty/alacritty_fastfetch.toml ~/.config/alacritty/alacritty.toml
+                         endCommandGroup "Install Fastfetch";
+                         sleep 3; break;;
+        "${options[2]}") startCommandGroup "Install Obsidian";
                          flatpak install flathub md.obsidian.Obsidian -y;
                          endCommandGroup "Install Obsidian";
                          sleep 3; break;;
@@ -271,7 +275,7 @@ while true; do
   options=("System setup." \
     "Install NVidia drivers." \
     "Install fonts." \
-    "Install Fish." \
+    "Setup Terminal." \
     "Install base software." \
     "Configure Gnome." \
     "Install dev environment." \
@@ -281,7 +285,7 @@ while true; do
       "${options[0]}") systemSetup; sleep 3; break;;
       "${options[1]}") installNVidia; sleep 3; break;;
       "${options[2]}") installFonts; sleep 3; break;;
-      "${options[3]}") installFish; sleep 3; break;;
+      "${options[3]}") setupTerminal; sleep 3; break;;
       "${options[4]}") installSoftware; sleep 3; break;;
       "${options[5]}") configureGnome; sleep 3; break;;
       "${options[6]}") installDevEnvironment; break;;

@@ -1,5 +1,5 @@
 [terminal]
-shell = { program = "/usr/bin/fish", args = ["-l"] }
+shell = { program = "/usr/bin/fish", args = ["-c fastfetch && exec fish -l"] }
 
 [colors.bright]
 black = "0x555753"
