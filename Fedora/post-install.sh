@@ -124,7 +124,7 @@ installSoftware()
   endCommandGroup "Install Bitwarden extension"
 
   startCommandGroup "Install HEIC support"
-  sudo dnf install heif-pixbuf-loader libheif-freeworld -y
+  sudo dnf install heif-pixbuf-loader libheif-freeworld libheif-tools -y
   endCommandGroup "Install HEIC support"
 
   startCommandGroup "Install VLC"
@@ -223,6 +223,7 @@ installDevEnvironment()
                          sleep 3; break;;
         "${options[4]}") startCommandGroup "Install Thonny";
                          sudo dnf install thonny -y;
+                         sudo usermod -aG dialout $(whoami)
                          endCommandGroup "Install Thonny";
                          sleep 3; break;;
         "Back") return;;
@@ -244,10 +245,10 @@ installExtraSoftware()
       "Obsidian.")
     select option in "${options[@]}" "Back"; do
       case "$option" in
-        "${options[0]}") startCommandGroup "Install Flatsweep & Flatseal";
-                         flatpak install flathub io.github.giantpinkrobots.flatsweep -y;
+        "${options[0]}") startCommandGroup "Install Warehouse & Flatseal";
+                         flatpak install flathub io.github.flattool.Warehouse -y;
                          flatpak install flathub com.github.tchx84.Flatseal -y;
-                         endCommandGroup "Install Flatsweep & Flatseal";
+                         endCommandGroup "Install Warehouse & Flatseal";
                          sleep 3; break;;
         "${options[1]}") startCommandGroup "Install Fastfetch";
                          sudo dnf install fastfetch -y;
