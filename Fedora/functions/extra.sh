@@ -11,7 +11,8 @@ installFlatpakSoftware()
     echo -e "Extra Flatpak tools installation."
     PS3="Select an option to install: "
     options=("Warehouse." \
-      "Flatseal.")
+      "Flatseal." \
+      "Bazaar.")
     select option in "${options[@]}" "Back"; do
       case "$option" in
         "${options[0]}") startCommandGroup "Install Warehouse";
@@ -21,6 +22,10 @@ installFlatpakSoftware()
         "${options[1]}") startCommandGroup "Install Flatseal";
                          flatpak install flathub com.github.tchx84.Flatseal -y;
                          endCommandGroup "Install Flatseal";
+                         sleep 3; break;;
+        "${options[2]}") startCommandGroup "Install Bazaar";
+                         flatpak install flathub io.github.kolunmi.Bazaar -y;
+                         endCommandGroup "Install Bazaar";
                          sleep 3; break;;
         "Back") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
@@ -101,15 +106,30 @@ installCreativitySoftware()
     echo -e "\e[35mFedora post-installation scripts.\e[0m"
     echo -e "Extra creativity software installation."
     PS3="Select an option to install: "
-    options=("Switcheroo." \
+    options=("Gimp." \
+      "Kdenlive." \
+      "Audacity." \
+      "Switcheroo." \
       "Pipeline.")
     select option in "${options[@]}" "Back"; do
       case "$option" in
-        "${options[0]}") startCommandGroup "Install Switcheroo";
+        "${options[0]}") startCommandGroup "Install Gimp";
+                         flatpak install flathub org.gimp.GIMP -y;
+                         endCommandGroup "Install Gimp";
+                         sleep 3; break;;
+        "${options[1]}") startCommandGroup "Install Kdenlive";
+                         flatpak install flathub org.kde.kdenlive -y;
+                         endCommandGroup "Install Kdenlive";
+                         sleep 3; break;;
+        "${options[2]}") startCommandGroup "Install Audacity";
+                         flatpak install flathub org.audacityteam.Audacity -y;
+                         endCommandGroup "Install Audacity";
+                         sleep 3; break;;
+        "${options[3]}") startCommandGroup "Install Switcheroo";
                          flatpak install flathub io.gitlab.adhami3310.Converter -y;
                          endCommandGroup "Install Switcheroo";
                          sleep 3; break;;
-        "${options[1]}") startCommandGroup "Install Pipeline";
+        "${options[4]}") startCommandGroup "Install Pipeline";
                          flatpak install flathub de.schmidhuberj.tubefeeder -y;
                          endCommandGroup "Install Pipeline";
                          sleep 3; break;;
