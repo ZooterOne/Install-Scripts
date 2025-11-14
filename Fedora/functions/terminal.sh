@@ -13,13 +13,21 @@ setupTerminal()
   /usr/bin/fish -c fish_update_completions
   endCommandGroup "Setup man page completions"
 
-  startCommandGroup "Install fisher"
-  /usr/bin/fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
-  endCommandGroup "Install fisher"
+  #startCommandGroup "Install fisher"
+  #/usr/bin/fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
+  #endCommandGroup "Install fisher"
 
-  startCommandGroup "Install tide"
-  /usr/bin/fish -c 'fisher install IlanCosman/tide@v6'
-  endCommandGroup "Install tide"
+  #startCommandGroup "Install tide"
+  #/usr/bin/fish -c 'fisher install IlanCosman/tide@v6'
+  #endCommandGroup "Install tide"
+
+  startCommandGroup "Install starship"
+  sudo dnf copr enable atim/starship
+  sudo dnf install starship -y
+  cp ../Starship/starship.toml ~/.config/starship.toml
+  echo 'eval "$(starship init bash)"' >> ~/.bashrc
+  echo 'eval (starship init fish)' >> ~/.config/fish/config.fish
+  endCommandGroup "Install starship"
 
   startCommandGroup "Install Alacritty"
   sudo dnf install alacritty -y
@@ -28,11 +36,11 @@ setupTerminal()
   endCommandGroup "Install Alacritty"
 
   startCommandGroup "Install eza"
-  wget https://github.com/eza-community/eza/releases/download/v0.21.3/eza_x86_64-unknown-linux-gnu.zip
-  sudo unzip eza_x86_64-unknown-linux-gnu.zip -d /usr/local/bin/
-  rm eza_x86_64-unknown-linux-gnu.zip
+  sudo dnf copr enable alternateved/eza
+  sudo dnf install eza -y
   mkdir ~/.config/eza
   cp ../Eza/one_dark.yml ~/.config/eza/theme.yml
   /usr/bin/fish -c "alias --save ls 'eza --icons -lh'"
+  alias ls="eza --icons -lh"
   endCommandGroup "Install eza"
 }
