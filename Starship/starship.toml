@@ -9,15 +9,15 @@ add_newline = true
 # /////////////////////////////////////////////
 
 format = """
-[╭](color_bg)\
+[╭](color_bg)[](color_black4)\
 $os\
-[](bg:color_bg fg:color_fg)\
+[](bg:color_bg fg:color_black4)\
 $directory\
+[](color_bg)\
+$fill\
 $git_branch\
 $git_status\
-[](color_bg)\
-$fill\
-[](color_bg)\
+[](color_bg)\
 $username\
 $sudo\
 $line_break\
@@ -57,7 +57,7 @@ color_blue4 = '#8fbcbb'
 
 [os]
 disabled = false
-style = "bg:color_bg fg:color_fg"
+style = "bg:color_black4 fg:color_fg"
 format = "[$symbol]($style)"
 
 [os.symbols]
@@ -108,12 +108,21 @@ truncate_to_repo = true
 
 [git_branch]
 symbol = ""
-style = "bg:color_bg fg:color_green"
-format = "[](bg:color_bg fg:color_fg)[ $symbol $branch ]($style)"
+style = "bg:color_black2 fg:color_green"
+format = "[](fg:color_black2)[ $symbol $branch ]($style)"
 
 [git_status]
-style = "bg:color_bg fg:color_orange"
-format = "[$all_status$ahead_behind ]($style)"
+style = "bg:color_black2 fg:color_blue2"
+format = "[$all_status$ahead_behind]($style)[](fg:color_black2)"
+conflicted = "[󰞇 $count ](bg:color_black2 fg:color_red)"
+ahead = "⇡ $count "
+behind = "⇣ $count "
+deleted = " $count "
+diverged = "󰃻 $count "
+renamed = "󰑕 $count "
+stashed = " $count "
+modified = "󰙏 $count "
+staged = " $count "
 
 [fill]
 symbol = "─"
@@ -124,7 +133,7 @@ disabled = false
 show_always = true
 style_user = "bg:color_bg fg:color_blue1"
 style_root = "bg:color_red fg:color_red"
-format = "[  ]($style)[$user ](bg:color_bg fg:color_fg)"
+format = "[   ]($style)"
 
 [sudo]
 disabled = false

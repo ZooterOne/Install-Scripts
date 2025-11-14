@@ -26,7 +26,7 @@ setupTerminal()
   sudo dnf install starship -y
   cp ../Starship/starship.toml ~/.config/starship.toml
   echo 'eval "$(starship init bash)"' >> ~/.bashrc
-  echo 'eval (starship init fish)' >> ~/.config/fish/config.fish
+  echo 'starship init fish | source' >> ~/.config/fish/config.fish
   endCommandGroup "Install starship"
 
   startCommandGroup "Install Alacritty"

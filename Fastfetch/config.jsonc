@@ -8,60 +8,65 @@
     "break",
     {
       "type": "custom",
-      "format": "╭────────────────────────────────────────────────────────────╮",
+      "format": "╭────────────────── Hardware Information ────────────────────╮",
       "outputColor": "36"
     },
     {
       "type": "os",
-      "outputColor": "36",
+      "outputColor": "37",
       "key": "  ",
       "keyColor": "34"
     },
     {
       "type": "cpu",
-      "outputColor": "36",
+      "outputColor": "37",
       "key": "  ",
       "keyColor": "34"
     },
     {
       "type": "gpu",
-      "outputColor": "36",
+      "outputColor": "37",
       "key": "  󰢮",
       "keyColor": "34"
     },
     {
       "type": "memory",
-      "outputColor": "36",
+      "outputColor": "37",
       "key": "  ",
       "keyColor": "34"
     },
     {
       "type": "disk",
-      "outputColor": "36",
+      "outputColor": "37",
       "key": "  󰋊",
       "keyColor": "34"
     },
     {
+      "type": "custom",
+      "format": "├────────────────── Software Information ────────────────────┤",
+      "outputColor": "36"
+    },
+    {
       "type": "kernel",
-      "outputColor": "36",
+      "outputColor": "37",
       "key": "  ",
       "keyColor": "34"
     },
     {
       "type": "shell",
-      "outputColor": "36",
+      "outputColor": "37",
       "key": "  ",
       "keyColor": "34"
     },
     {
       "type": "packages",
-      "outputColor": "36",
+      "outputColor": "37",
       "key": "  ",
       "keyColor": "34"
     },
     {
       "type": "uptime",
-      "outputColor": "36",
+      "outputColor": "37",
       "key": "  ",
       "keyColor": "34"
     },
