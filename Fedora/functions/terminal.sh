@@ -22,7 +22,7 @@ setupTerminal()
   #endCommandGroup "Install tide"
 
   startCommandGroup "Install starship"
-  sudo dnf copr enable atim/starship
+  sudo dnf copr enable atim/starship -y
   sudo dnf install starship -y
   cp ../Starship/starship.toml ~/.config/starship.toml
   echo 'eval "$(starship init bash)"' >> ~/.bashrc
@@ -36,7 +36,7 @@ setupTerminal()
   endCommandGroup "Install Alacritty"
 
   startCommandGroup "Install eza"
-  sudo dnf copr enable alternateved/eza
+  sudo dnf copr enable alternateved/eza -y
   sudo dnf install eza -y
   mkdir ~/.config/eza
   cp ../Eza/one_dark.yml ~/.config/eza/theme.yml
