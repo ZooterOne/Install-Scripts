@@ -45,7 +45,8 @@ installSystemSoftware()
       "Btop." \
       "MissionCenter." \
       "Distrobox." \
-      "BoxBuddy.")
+      "BoxBuddy." \
+      "Macbook Air Wifi.")
     select option in "${options[@]}" "Back"; do
       case "$option" in
         "${options[0]}") startCommandGroup "Install Fastfetch";
@@ -70,6 +71,10 @@ installSystemSoftware()
         "${options[4]}") startCommandGroup "Install BoxBuddy";
                          flatpak install flathub io.github.dvlv.boxbuddyrs -y;
                          endCommandGroup "Install BoxBuddy";
+                         sleep 3; break;;
+        "${options[5]}") startCommandGroup "Install Broadcom driver";
+                         sudo dnf install broadcom-wl -y;
+                         endCommandGroup "Install Broadcom driver";
                          sleep 3; break;;
         "Back") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
