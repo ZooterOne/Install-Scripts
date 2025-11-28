@@ -150,7 +150,11 @@ installVirtualizationSoftware()
         "${options[0]}") startCommandGroup "Install Virtualbox";
                          sudo wget --directory-prefix /etc/yum.repos.d https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
                          sudo dnf install VirtualBox-7.2 -y;
-                         wget --directory-prefix ~/Downloads https://download.virtualbox.org/virtualbox/7.2.4/Oracle_VirtualBox_Extension_Pack-7.2.4.vbox-extpack
+                         sudo usermod -a -G vboxusers $(whoami)
+                         vbVersion = $(vboxmanage -v | cut -dr -f1)
+                         wget --directory-prefix ~/Downloads https://download.virtualbox.org/virtualbox/$vbVersion/Oracle_VirtualBox_Extension_Pack-$vbVersion.vbox-extpack
+                         sudo vboxmanage extpack install ~/Downloads/Oracle_VirtualBox_Extension_Pack-$vbVersion.vbox-extpack
+                         rm -f ~/Downloads/Oracle_VirtualBox_Extension_Pack-$vbVersion.vbox-extpack
                          endCommandGroup "Install Virtualbox";
                          sleep 3; break;;
         "${options[1]}") startCommandGroup "Install Distrobox";
