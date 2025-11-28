@@ -44,8 +44,6 @@ installSystemSoftware()
     options=("Fastfetch." \
       "Btop." \
       "MissionCenter." \
-      "Distrobox." \
-      "BoxBuddy." \
       "Macbook Air Wifi.")
     select option in "${options[@]}" "Back"; do
       case "$option" in
@@ -64,15 +62,7 @@ installSystemSoftware()
                          flatpak install flathub io.missioncenter.MissionCenter -y;
                          endCommandGroup "Install MissionCenter";
                          sleep 3; break;;
-        "${options[3]}") startCommandGroup "Install Distrobox";
-                         sudo dnf install distrobox -y;
-                         endCommandGroup "Install Distrobox";
-                         sleep 3; break;;
-        "${options[4]}") startCommandGroup "Install BoxBuddy";
-                         flatpak install flathub io.github.dvlv.boxbuddyrs -y;
-                         endCommandGroup "Install BoxBuddy";
-                         sleep 3; break;;
-        "${options[5]}") startCommandGroup "Install Broadcom driver";
+        "${options[3]}") startCommandGroup "Install Broadcom driver";
                          sudo dnf install broadcom-wl -y;
                          endCommandGroup "Install Broadcom driver";
                          sleep 3; break;;
@@ -145,6 +135,39 @@ installCreativitySoftware()
   done
 }
 
+installVirtualizationSoftware()
+{
+  while true; do
+    clear
+    echo -e "\e[35mFedora post-installation scripts.\e[0m"
+    echo -e "Extra virtualization software installation."
+    PS3="Select an option to install: "
+    options=("Virtualbox." \
+      "Distrobox." \
+      "BoxBuddy.")
+    select option in "${options[@]}" "Back"; do
+      case "$option" in
+        "${options[0]}") startCommandGroup "Install Virtualbox";
+                         sudo wget --directory-prefix /etc/yum.repos.d https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+                         sudo dnf install VirtualBox-7.2 -y;
+                         wget --directory-prefix ~/Downloads https://download.virtualbox.org/virtualbox/7.2.4/Oracle_VirtualBox_Extension_Pack-7.2.4.vbox-extpack
+                         endCommandGroup "Install Virtualbox";
+                         sleep 3; break;;
+        "${options[1]}") startCommandGroup "Install Distrobox";
+                         sudo dnf install distrobox -y;
+                         endCommandGroup "Install Distrobox";
+                         sleep 3; break;;
+        "${options[2]}") startCommandGroup "Install BoxBuddy";
+                         flatpak install flathub io.github.dvlv.boxbuddyrs -y;
+                         endCommandGroup "Install BoxBuddy";
+                         sleep 3; break;;
+        "Back") return;;
+        *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
+      esac
+    done
+  done
+}
+
 installExtraSoftware()
 {
  while true; do
@@ -155,13 +178,15 @@ installExtraSoftware()
     options=("Flatpak tools." \
       "System software." \
       "Office software." \
-      "Creativity software.")
+      "Creativity software." \
+      "Virtualization software.")
     select option in "${options[@]}" "Back"; do
       case "$option" in
         "${options[0]}") installFlatpakSoftware; sleep 3; break;;
         "${options[1]}") installSystemSoftware; sleep 3; break;;
         "${options[2]}") installOfficeSoftware; sleep 3; break;;
         "${options[3]}") installCreativitySoftware; sleep 3; break;;
+        "${options[4]}") installVirtualizationSoftware; sleep 3; break;;
         "Back") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
