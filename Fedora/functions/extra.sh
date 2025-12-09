@@ -80,12 +80,17 @@ installOfficeSoftware()
     echo -e "\e[35mFedora post-installation scripts.\e[0m"
     echo -e "Extra office software installation."
     PS3="Select an option to install: "
-    options=("Obsidian.")
+    options=("Obsidian." \
+      "Apostrophe")
     select option in "${options[@]}" "Back"; do
       case "$option" in
         "${options[0]}") startCommandGroup "Install Obsidian";
                          flatpak install flathub md.obsidian.Obsidian -y;
                          endCommandGroup "Install Obsidian";
+                         sleep 3; break;;
+        "${options[1]}") startCommandGroup "Install Apostrophe";
+                         sudo dnf install apostrophe -y;
+                         endCommandGroup "Install Apostrophe";
                          sleep 3; break;;
         "Back") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
