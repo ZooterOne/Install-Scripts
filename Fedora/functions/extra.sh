@@ -177,6 +177,47 @@ installVirtualizationSoftware()
   done
 }
 
+installAISoftware()
+{
+  while true; do
+    clear
+    echo -e "\e[35mFedora post-installation scripts.\e[0m"
+    echo -e "Extra AI software installation."
+    PS3="Select an option to install: "
+    options=("Ollama." \
+      "Phind-CodeLlama Model." \
+      "Codestral Model." \
+      "CodeGemma Model." \
+      "Gpt-Oss Model.")
+    select option in "${options[@]}" "Back"; do
+      case "$option" in
+        "${options[0]}") startCommandGroup "Install Ollama";
+                         curl -fsSL https://ollama.com/install.sh | sh
+                         endCommandGroup "Install Ollama";
+                         sleep 3; break;;
+        "${options[1]}") startCommandGroup "Install Phind-CodeLlama Model";
+                         ollama pull phind-codellama:latest
+                         endCommandGroup "Install Phind-CodeLlama Model";
+                         sleep 3; break;;
+        "${options[2]}") startCommandGroup "Install Codestral Model";
+                         ollama pull codestral:latest
+                         endCommandGroup "Install Codestral Model";
+                         sleep 3; break;;
+        "${options[3]}") startCommandGroup "Install CodeGemma Model";
+                         ollama pull codegemma:latest
+                         endCommandGroup "Install CodeGemma Model";
+                         sleep 3; break;;
+        "${options[4]}") startCommandGroup "Install Gpt-Oss Model";
+                         ollama pull gpt-oss:latest
+                         endCommandGroup "Install Gpt-Oss Model";
+                         sleep 3; break;;
+        "Back") return;;
+        *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
+      esac
+    done
+  done
+}
+
 installExtraSoftware()
 {
  while true; do
@@ -188,7 +229,8 @@ installExtraSoftware()
       "System software." \
       "Office software." \
       "Creativity software." \
-      "Virtualization software.")
+      "Virtualization software." \
+      "AI software.")
     select option in "${options[@]}" "Back"; do
       case "$option" in
         "${options[0]}") installFlatpakSoftware; sleep 3; break;;
@@ -196,6 +238,7 @@ installExtraSoftware()
         "${options[2]}") installOfficeSoftware; sleep 3; break;;
         "${options[3]}") installCreativitySoftware; sleep 3; break;;
         "${options[4]}") installVirtualizationSoftware; sleep 3; break;;
+        "${options[5]}") installAISoftware; sleep 3; break;;
         "Back") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
