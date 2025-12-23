@@ -73,6 +73,33 @@ installSystemSoftware()
   done
 }
 
+installNetworkSoftware()
+{
+ while true; do
+    clear
+    echo -e "\e[35mFedora post-installation scripts.\e[0m"
+    echo -e "Extra network software installation."
+    PS3="Select an option to install: "
+    options=("Nmap." \
+      "Proton VPN.")
+    select option in "${options[@]}" "Back"; do
+      case "$option" in
+        "${options[0]}") startCommandGroup "Install Nmap";
+                         sudo dnf install nmap -y;
+                         endCommandGroup "Install Nmap";
+                         sleep 3; break;;
+        "${options[1]}") startCommandGroup "Install Proton VPN";
+                         sudo dnf install https://repo.protonvpn.com/fedora-$(rpm -E %fedora)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.3-1.noarch.rpm -y && sudo dnf check-update --refresh -y;
+                         sudo dnf install proton-vpn-gnome-desktop proton-vpn-cli -y;
+                         endCommandGroup "Install Proton VPN";
+                         sleep 3; break;;
+        "Back") return;;
+        *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
+      esac
+    done
+  done
+}
+
 installOfficeSoftware()
 {
  while true; do
@@ -227,6 +254,7 @@ installExtraSoftware()
     PS3="Select an option to install: "
     options=("Flatpak tools." \
       "System software." \
+      "Network software." \
       "Office software." \
       "Creativity software." \
       "Virtualization software." \
@@ -235,10 +263,11 @@ installExtraSoftware()
       case "$option" in
         "${options[0]}") installFlatpakSoftware; sleep 3; break;;
         "${options[1]}") installSystemSoftware; sleep 3; break;;
-        "${options[2]}") installOfficeSoftware; sleep 3; break;;
-        "${options[3]}") installCreativitySoftware; sleep 3; break;;
-        "${options[4]}") installVirtualizationSoftware; sleep 3; break;;
-        "${options[5]}") installAISoftware; sleep 3; break;;
+        "${options[2]}") installNetworkSoftware; sleep 3; break;;
+        "${options[3]}") installOfficeSoftware; sleep 3; break;;
+        "${options[4]}") installCreativitySoftware; sleep 3; break;;
+        "${options[5]}") installVirtualizationSoftware; sleep 3; break;;
+        "${options[6]}") installAISoftware; sleep 3; break;;
         "Back") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
