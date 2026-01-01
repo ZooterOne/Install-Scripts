@@ -70,9 +70,23 @@ installFastfetch()
 {
   startCommandGroup "Install Fastfetch"
   sudo dnf install fastfetch -y
+  endCommandGroup "Install Fastfetch"
+}
+
+setupFastfetch()
+{
+  startCommandGroup "Setup Fastfetch"
   mkdir ~/.config/fastfetch
   cp ../Fastfetch/config.jsonc ~/.config/fastfetch/
-  endCommandGroup "Install Fastfetch"
+  endCommandGroup "Setup Fastfetch"
+}
+
+setupFastfetchNoIcons()
+{
+  startCommandGroup "Setup Fastfetch"
+  mkdir ~/.config/fastfetch
+  cp ../Fastfetch/config-simple.jsonc ~/.config/fastfetch/config.jsonc
+  endCommandGroup "Setup Fastfetch"
 }
 
 setupAlacrittyFastfetch()
@@ -125,7 +139,7 @@ installProtonVPNCli()
 {
   startCommandGroup "Install Proton VPN"
   sudo dnf install https://repo.protonvpn.com/fedora-$(rpm -E %fedora)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.3-1.noarch.rpm -y && sudo dnf check-update --refresh -y
-  sudo dnf install proton-vpn-cli -y
+  sudo dnf install proton-vpn-cli python3-click -y
   endCommandGroup "Install Proton VPN"
 }
 

@@ -57,7 +57,21 @@ installEza()
   sudo dnf install eza -y
   mkdir ~/.config/eza
   cp ../Eza/one_dark.yml ~/.config/eza/theme.yml
+  endCommandGroup "Install eza"
+}
+
+setupEzaAlias()
+{
+  startCommandGroup "Setup eza"
   /usr/bin/fish -c "alias --save ls 'eza --icons -lh'"
   alias ls="eza --icons -lh"
-  endCommandGroup "Install eza"
+  endCommandGroup "Setup eza"
+}
+
+setupEzaAliasNoIcons()
+{
+  startCommandGroup "Setup eza"
+  /usr/bin/fish -c "alias --save ls 'eza -lh'"
+  alias ls="eza -lh"
+  endCommandGroup "Setup eza"
 }

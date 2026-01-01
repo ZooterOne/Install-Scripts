@@ -75,7 +75,10 @@ showSystemSoftware()
       "Macbook Air Wifi.")
     select option in "${options[@]}" "Back"; do
       case "$option" in
-        "${options[0]}") installFastfetch; setupAlacrittyFastfetch; sleep 3; break;;
+        "${options[0]}") installFastfetch;
+                         setupFastfetch;
+                         setupAlacrittyFastfetch;
+                         sleep 3; break;;
         "${options[1]}") installBtop; sleep 3; break;;
         "${options[2]}") installMissionCenter; sleep 3; break;;
         "${options[3]}") installBroadcomDriver; sleep 3; break;;
@@ -260,6 +263,7 @@ while true; do
                        installStarship;
                        installAlacritty;
                        installEza;
+                       setupEzaAlias;
                        sleep 3; break;;
       "${options[4]}") setupFirefox;
                        installHEIC;

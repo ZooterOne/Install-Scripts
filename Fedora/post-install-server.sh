@@ -26,7 +26,10 @@ showExtraSoftware()
       "Ollama.")
     select option in "${options[@]}" "Back"; do
       case "$option" in
-        "${options[0]}") installFastfetch; setupFishFastfetch; sleep 3; break;;
+        "${options[0]}") installFastfetch;
+                         setupFastfetchNoIcons;
+                         setupFishFastfetch;
+                         sleep 3; break;;
         "${options[1]}") installBtop; sleep 3; break;;
         "${options[2]}") installProtonVPNCli; sleep 3; break;;
         "${options[3]}") installNmap; sleep 3; break;;
@@ -61,8 +64,10 @@ while true; do
                        setupAutoUpdates;
                        sleep 3; break;;
       "${options[1]}") installFish;
+                       installFishTide;
                        setupFishAsDefaultShell;
                        installEza;
+                       setupEzaAliasNoIcons;
                        sleep 3; break;;
       "${options[2]}") showExtraSoftware; break;;
       "Quit") exit;;
