@@ -4,7 +4,7 @@ source "functions/common.sh"
 source "functions/system.sh"
 source "functions/nvidia.sh"
 source "functions/fonts.sh"
-source "functions/terminal.sh"
+source "functions/shell.sh"
 source "functions/software.sh"
 source "functions/gnome.sh"
 source "functions/dev.sh"
@@ -94,11 +94,13 @@ showNetworkSoftware()
     echo -e "Extra network software installation."
     PS3="Select an option to install: "
     options=("Nmap." \
-      "Proton VPN.")
+      "Proton VPN." \
+      "Transmission.")
     select option in "${options[@]}" "Back"; do
       case "$option" in
         "${options[0]}") installNmap; sleep 3; break;;
         "${options[1]}") installProtonVPNDesktop; sleep 3; break;;
+        "${options[2]}") installTransmissionDesktop; sleep 3; break;;
         "Back") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac

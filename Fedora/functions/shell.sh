@@ -12,6 +12,13 @@ installFish()
   endCommandGroup "Setup man page completions"
 }
 
+setupFishAsDefaultShell()
+{
+  startCommandGroup "Setup fish as default"
+  chsh -s $(which fish)
+  endCommandGroup "Setup fish as default"
+}
+
 installFishTide()
 {
   startCommandGroup "Install fisher"

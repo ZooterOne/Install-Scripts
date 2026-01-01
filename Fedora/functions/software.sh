@@ -89,6 +89,13 @@ setupBashFastfetch()
   endCommandGroup "Install Fastfetch on Bash"
 }
 
+setupFishFastfetch()
+{
+  startCommandGroup "Install Fastfetch on Fish"
+  echo "fastfetch" | sudo tee -a ~/.config/fish/config.fish
+  endCommandGroup "Install Fastfetch on Fish"
+}
+
 installBtop()
 {
   startCommandGroup "Install Btop"
@@ -128,6 +135,20 @@ installProtonVPNDesktop()
   sudo dnf install https://repo.protonvpn.com/fedora-$(rpm -E %fedora)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.3-1.noarch.rpm -y && sudo dnf check-update --refresh -y
   sudo dnf install proton-vpn-gnome-desktop -y
   endCommandGroup "Install Proton VPN"
+}
+
+installTransmissionCli()
+{
+  startCommandGroup "Install Transmission"
+  sudo dnf install transmission-cli -y
+  endCommandGroup "Install Transmission"
+}
+
+installTransmissionDesktop()
+{
+  startCommandGroup "Install Transmission"
+  sudo dnf install transmission -y
+  endCommandGroup "Install Transmission"
 }
 
 #####################################################################

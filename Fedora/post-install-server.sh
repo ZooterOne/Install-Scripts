@@ -2,7 +2,7 @@
 
 source "functions/common.sh"
 source "functions/system.sh"
-source "functions/terminal.sh"
+source "functions/shell.sh"
 source "functions/software.sh"
 
 
@@ -26,11 +26,11 @@ showExtraSoftware()
       "Ollama.")
     select option in "${options[@]}" "Back"; do
       case "$option" in
-        "${options[0]}") installFastfetch; setupBashFastfetch; sleep 3; break;;
+        "${options[0]}") installFastfetch; setupFishFastfetch; sleep 3; break;;
         "${options[1]}") installBtop; sleep 3; break;;
         "${options[2]}") installProtonVPNCli; sleep 3; break;;
         "${options[3]}") installNmap; sleep 3; break;;
-        "${options[4]}") installBtop; sleep 3; break;;
+        "${options[4]}") installTransmissionCli; sleep 3; break;;
         "${options[5]}") installDistrobox; sleep 3; break;;
         "${options[6]}") installOllama; installOllamaGptModel; sleep 3; break;;
         "Back") return;;
@@ -57,12 +57,11 @@ while true; do
       "${options[0]}") setupHostname;
                        updateDnfOptions;
                        setupRpmFusion;
-                       setupFlathub;
                        updateSystem;
                        setupAutoUpdates;
                        sleep 3; break;;
       "${options[1]}") installFish;
-                       installStarship;
+                       setupFishAsDefaultShell;
                        installEza;
                        sleep 3; break;;
       "${options[2]}") showExtraSoftware; break;;
