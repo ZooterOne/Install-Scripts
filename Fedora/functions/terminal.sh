@@ -1,9 +1,7 @@
 #!/bin/bash
 
-source "common.sh"
 
-
-setupTerminal()
+installFish()
 {
   startCommandGroup "Install fish"
   sudo dnf install util-linux-user fish -y
@@ -12,15 +10,21 @@ setupTerminal()
   startCommandGroup "Setup man page completions"
   /usr/bin/fish -c fish_update_completions
   endCommandGroup "Setup man page completions"
+}
 
-  #startCommandGroup "Install fisher"
-  #/usr/bin/fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
-  #endCommandGroup "Install fisher"
+installFishTide()
+{
+  startCommandGroup "Install fisher"
+  /usr/bin/fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
+  endCommandGroup "Install fisher"
 
-  #startCommandGroup "Install tide"
-  #/usr/bin/fish -c 'fisher install IlanCosman/tide@v6'
-  #endCommandGroup "Install tide"
+  startCommandGroup "Install tide"
+  /usr/bin/fish -c 'fisher install IlanCosman/tide@v6'
+  endCommandGroup "Install tide"
+}
 
+installStarship()
+{
   startCommandGroup "Install starship"
   sudo dnf copr enable atim/starship -y
   sudo dnf install starship -y
@@ -28,13 +32,19 @@ setupTerminal()
   echo 'eval "$(starship init bash)"' >> ~/.bashrc
   echo 'starship init fish | source' >> ~/.config/fish/config.fish
   endCommandGroup "Install starship"
+}
 
+installAlacritty()
+{
   startCommandGroup "Install Alacritty"
   sudo dnf install alacritty -y
   mkdir ~/.config/alacritty
   cp ../Alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
   endCommandGroup "Install Alacritty"
+}
 
+installEza()
+{
   startCommandGroup "Install eza"
   sudo dnf copr enable alternateved/eza -y
   sudo dnf install eza -y
