@@ -139,7 +139,7 @@ installProtonVPNCli()
 {
   startCommandGroup "Install Proton VPN"
   sudo dnf install https://repo.protonvpn.com/fedora-$(rpm -E %fedora)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.3-1.noarch.rpm -y && sudo dnf check-update --refresh -y
-  sudo dnf install proton-vpn-cli python3-click -y
+  sudo dnf install proton-vpn-cli -y
   endCommandGroup "Install Proton VPN"
 }
 

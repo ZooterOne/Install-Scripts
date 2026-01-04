@@ -19,9 +19,7 @@ showExtraSoftware()
     PS3="Select an option to install: "
     options=("Fastfetch." \
       "Btop." \
-      "Proton VPN." \
       "Nmap." \
-      "Transmission." \
       "Distrobox." \
       "Ollama.")
     select option in "${options[@]}" "Back"; do
@@ -31,11 +29,9 @@ showExtraSoftware()
                          setupFishFastfetch;
                          sleep 3; break;;
         "${options[1]}") installBtop; sleep 3; break;;
-        "${options[2]}") installProtonVPNCli; sleep 3; break;;
-        "${options[3]}") installNmap; sleep 3; break;;
-        "${options[4]}") installTransmissionCli; sleep 3; break;;
-        "${options[5]}") installDistrobox; sleep 3; break;;
-        "${options[6]}") installOllama; installOllamaGptModel; sleep 3; break;;
+        "${options[2]}") installNmap; sleep 3; break;;
+        "${options[3]}") installDistrobox; sleep 3; break;;
+        "${options[4]}") installOllama; installOllamaGptModel; sleep 3; break;;
         "Back") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
