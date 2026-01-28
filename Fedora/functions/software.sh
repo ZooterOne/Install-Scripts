@@ -92,7 +92,12 @@ setupFastfetchNoIcons()
 setupAlacrittyFastfetch()
 {
   startCommandGroup "Install Fastfetch on Alacritty"
-  cp ../Alacritty/alacritty_fastfetch.toml ~/.config/alacritty/alacritty.toml
+  installedCommandCheck alacritty
+  if [ $? -eq 0 ]; then
+    cp ../Alacritty/alacritty_fastfetch.toml ~/.config/alacritty/alacritty.toml
+  else
+    false
+  fi
   endCommandGroup "Install Fastfetch on Alacritty"
 }
 
@@ -133,6 +138,13 @@ installNmap()
   startCommandGroup "Install Nmap"
   sudo dnf install nmap -y
   endCommandGroup "Install Nmap"
+}
+
+installIftop()
+{
+  startCommandGroup "Install Iftop"
+  sudo dnf install iftop -y
+  endCommandGroup "Install Iftop"
 }
 
 installProtonVPNCli()
@@ -267,6 +279,11 @@ installOllama()
 installOllamaGptModel()
 {
   startCommandGroup "Install Gpt-Oss Model"
-  ollama pull gpt-oss:latest
+  installedCommandCheck ollama
+  if [ $? -eq 0 ]; then
+    ollama pull gpt-oss:latest
+  else
+    false
+  fi
   endCommandGroup "Install Gpt-Oss Model"
 }

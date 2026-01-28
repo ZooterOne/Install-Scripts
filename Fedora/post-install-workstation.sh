@@ -26,14 +26,14 @@ showDevEnvironment()
       ".Net SDK." \
       "C++ tools." \
       "Raspberry PI tools.")
-    select option in "${options[@]}" "Back"; do
+    select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installGithubTool; sleep 3; break;;
         "${options[1]}") installVSCode; sleep 3; break;;
         "${options[2]}") installDotNetSdk; sleep 3; break;;
         "${options[3]}") installCppSDK; sleep 3; break;;
         "${options[4]}") installThonny; sleep 3; break;;
-        "Back") return;;
+        "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
     done
@@ -50,12 +50,12 @@ showFlatpakSoftware()
     options=("Warehouse." \
       "Flatseal." \
       "Bazaar.")
-    select option in "${options[@]}" "Back"; do
+    select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installWarehouse; sleep 3; break;;
         "${options[1]}") installFlatseal; sleep 3; break;;
         "${options[2]}") installBazaar; sleep 3; break;;
-        "Back") return;;
+        "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
     done
@@ -73,7 +73,7 @@ showSystemSoftware()
       "Btop." \
       "MissionCenter." \
       "Macbook Air Wifi.")
-    select option in "${options[@]}" "Back"; do
+    select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installFastfetch;
                          setupFastfetch;
@@ -82,7 +82,7 @@ showSystemSoftware()
         "${options[1]}") installBtop; sleep 3; break;;
         "${options[2]}") installMissionCenter; sleep 3; break;;
         "${options[3]}") installBroadcomDriver; sleep 3; break;;
-        "Back") return;;
+        "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
     done
@@ -97,14 +97,16 @@ showNetworkSoftware()
     echo -e "Extra network software installation."
     PS3="Select an option to install: "
     options=("Nmap." \
+      "Iftop." \
       "Proton VPN." \
       "Transmission.")
-    select option in "${options[@]}" "Back"; do
+    select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installNmap; sleep 3; break;;
-        "${options[1]}") installProtonVPNDesktop; sleep 3; break;;
-        "${options[2]}") installTransmissionDesktop; sleep 3; break;;
-        "Back") return;;
+        "${options[1]}") installIftop; sleep 3; break;;
+        "${options[2]}") installProtonVPNDesktop; sleep 3; break;;
+        "${options[3]}") installTransmissionDesktop; sleep 3; break;;
+        "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
     done
@@ -119,12 +121,12 @@ showOfficeSoftware()
     echo -e "Extra office software installation."
     PS3="Select an option to install: "
     options=("Obsidian." \
-      "Apostrophe")
-    select option in "${options[@]}" "Back"; do
+      "Apostrophe.")
+    select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installObsidian; sleep 3; break;;
         "${options[1]}") installApostrophe; sleep 3; break;;
-        "Back") return;;
+        "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
     done
@@ -143,14 +145,14 @@ showCreativitySoftware()
       "Audacity." \
       "Switcheroo." \
       "Pipeline.")
-    select option in "${options[@]}" "Back"; do
+    select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installGimp; sleep 3; break;;
         "${options[1]}") installKdenlive; sleep 3; break;;
         "${options[2]}") installAudacity; sleep 3; break;;
         "${options[3]}") installSwitcheroo; sleep 3; break;;
         "${options[4]}") installPipeline; sleep 3; break;;
-        "Back") return;;
+        "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
     done
@@ -167,12 +169,12 @@ showVirtualizationSoftware()
     options=("Virtualbox." \
       "Distrobox." \
       "BoxBuddy.")
-    select option in "${options[@]}" "Back"; do
+    select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installVirtualBox; sleep 3; break;;
         "${options[1]}") installDistrobox; sleep 3; break;;
         "${options[2]}") installBoxBuddy; sleep 3; break;;
-        "Back") return;;
+        "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
     done
@@ -188,11 +190,11 @@ showAISoftware()
     PS3="Select an option to install: "
     options=("Ollama." \
       "Gpt-Oss Model.")
-    select option in "${options[@]}" "Back"; do
+    select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installOllama; sleep 3; break;;
         "${options[1]}") installOllamaGptModel; sleep 3; break;;
-        "Back") return;;
+        "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
     done
@@ -213,7 +215,7 @@ showExtraSoftware()
       "Creativity software." \
       "Virtualization software." \
       "AI software.")
-    select option in "${options[@]}" "Back"; do
+    select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") showFlatpakSoftware; sleep 3; break;;
         "${options[1]}") showSystemSoftware; sleep 3; break;;
@@ -222,7 +224,7 @@ showExtraSoftware()
         "${options[4]}") showCreativitySoftware; sleep 3; break;;
         "${options[5]}") showVirtualizationSoftware; sleep 3; break;;
         "${options[6]}") showAISoftware; sleep 3; break;;
-        "Back") return;;
+        "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
     done
@@ -239,14 +241,14 @@ while true; do
   echo
   PS3="Select an option to run: "
   options=("System setup." \
-    "Install NVidia drivers." \
-    "Install fonts." \
+    "Setup NVidia drivers." \
+    "Setup fonts." \
     "Setup Terminal." \
-    "Install base software." \
+    "Setup base software." \
     "Configure Gnome." \
     "Install dev environment." \
     "Install extra software.")
-  select option in "${options[@]}" "Quit"; do
+  select option in "${options[@]}" "Quit."; do
     case "$option" in
       "${options[0]}") setupHostname;
                        updateDnfOptions;
@@ -272,7 +274,7 @@ while true; do
       "${options[5]}") configureGnome; sleep 3; break;;
       "${options[6]}") showDevEnvironment; break;;
       "${options[7]}") showExtraSoftware; break;;
-      "Quit") exit;;
+      "Quit.") exit;;
       *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid option.\e[0m";
     esac
   done

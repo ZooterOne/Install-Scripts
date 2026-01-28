@@ -22,7 +22,7 @@ showExtraSoftware()
       "Nmap." \
       "Distrobox." \
       "Ollama.")
-    select option in "${options[@]}" "Back"; do
+    select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installFastfetch;
                          setupFastfetchNoIcons;
@@ -50,8 +50,8 @@ while true; do
   PS3="Select an option to run: "
   options=("System setup." \
     "Setup shell." \
-    "Install extra software.")
-  select option in "${options[@]}" "Quit"; do
+    "Setup extra software.")
+  select option in "${options[@]}" "Quit."; do
     case "$option" in
       "${options[0]}") setupHostname;
                        updateDnfOptions;
@@ -66,7 +66,7 @@ while true; do
                        setupEzaAliasNoIcons;
                        sleep 3; break;;
       "${options[2]}") showExtraSoftware; break;;
-      "Quit") exit;;
+      "Quit.") exit;;
       *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid option.\e[0m";
     esac
   done
