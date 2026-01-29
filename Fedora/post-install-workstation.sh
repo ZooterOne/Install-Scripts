@@ -189,11 +189,13 @@ showAISoftware()
     echo -e "Extra AI software installation."
     PS3="Select an option to install: "
     options=("Ollama." \
-      "Gpt-Oss Model.")
+      "Gpt-Oss Model." \
+      "Devstral Model.")
     select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installOllama; sleep 3; break;;
         "${options[1]}") installOllamaGptModel; sleep 3; break;;
+        "${options[2]}") installOllamaDevstralModel; sleep 3; break;;
         "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac

@@ -272,7 +272,7 @@ installBoxBuddy()
 installOllama()
 {
   startCommandGroup "Install Ollama"
-  curl -fsSL https://ollama.com/install.sh | sh
+  sudo dnf install ollama -y
   endCommandGroup "Install Ollama"
 }
 
@@ -286,4 +286,16 @@ installOllamaGptModel()
     false
   fi
   endCommandGroup "Install Gpt-Oss Model"
+}
+
+installOllamaDevstralModel()
+{
+  startCommandGroup "Install Devstral Model"
+  installedCommandCheck ollama
+  if [ $? -eq 0 ]; then
+    ollama pull devstral-small-2:latest
+  else
+    false
+  fi
+  endCommandGroup "Install Devstral Model"
 }
