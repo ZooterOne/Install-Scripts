@@ -5,15 +5,6 @@
 # Basic software
 #####################################################################
 
-setupFirefox()
-{
-  startCommandGroup "Setup Firefox"
-  firefox https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/
-  firefox https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/
-  firefox about:preferences
-  endCommandGroup "Setup Firefox"
-}
-
 installHEIC()
 {
   startCommandGroup "Install HEIC support"
@@ -30,38 +21,6 @@ installVLC()
   endCommandGroup "Install VLC"
 }
 
-installBroadcomDriver()
-{
-  startCommandGroup "Install Broadcom driver"
-  sudo dnf install broadcom-wl -y
-  endCommandGroup "Install Broadcom driver"
-}
-
-#####################################################################
-# Flatpak utilities
-#####################################################################
-
-installWarehouse()
-{
-  startCommandGroup "Install Warehouse"
-  flatpak install flathub io.github.flattool.Warehouse -y
-  endCommandGroup "Install Warehouse"
-}
-
-installFlatseal()
-{
-  startCommandGroup "Install Flatseal"
-  flatpak install flathub com.github.tchx84.Flatseal -y
-  endCommandGroup "Install Flatseal"
-}
-
-installBazaar()
-{
-  startCommandGroup "Install Bazaar"
-  flatpak install flathub io.github.kolunmi.Bazaar -y
-  endCommandGroup "Install Bazaar"
-}
-
 #####################################################################
 # System software
 #####################################################################
@@ -73,60 +32,11 @@ installFastfetch()
   endCommandGroup "Install Fastfetch"
 }
 
-setupFastfetch()
-{
-  startCommandGroup "Setup Fastfetch"
-  mkdir ~/.config/fastfetch
-  cp ../Fastfetch/config.jsonc ~/.config/fastfetch/
-  endCommandGroup "Setup Fastfetch"
-}
-
-setupFastfetchNoIcons()
-{
-  startCommandGroup "Setup Fastfetch"
-  mkdir ~/.config/fastfetch
-  cp ../Fastfetch/config-simple.jsonc ~/.config/fastfetch/config.jsonc
-  endCommandGroup "Setup Fastfetch"
-}
-
-setupAlacrittyFastfetch()
-{
-  startCommandGroup "Install Fastfetch on Alacritty"
-  installedCommandCheck alacritty
-  if [ $? -eq 0 ]; then
-    cp ../Alacritty/alacritty_fastfetch.toml ~/.config/alacritty/alacritty.toml
-  else
-    false
-  fi
-  endCommandGroup "Install Fastfetch on Alacritty"
-}
-
-setupBashFastfetch()
-{
-  startCommandGroup "Install Fastfetch on Bash"
-  echo "fastfetch" | sudo tee -a ~/.bashrc
-  endCommandGroup "Install Fastfetch on Bash"
-}
-
-setupFishFastfetch()
-{
-  startCommandGroup "Install Fastfetch on Fish"
-  echo "fastfetch" | sudo tee -a ~/.config/fish/config.fish
-  endCommandGroup "Install Fastfetch on Fish"
-}
-
 installBtop()
 {
   startCommandGroup "Install Btop"
   sudo dnf install btop -y
   endCommandGroup "Install Btop"
-}
-
-installMissionCenter()
-{
-  startCommandGroup "Install MissionCenter"
-  flatpak install flathub io.missioncenter.MissionCenter -y
-  endCommandGroup "Install MissionCenter"
 }
 
 #####################################################################
@@ -178,63 +88,6 @@ installTransmissionDesktop()
 }
 
 #####################################################################
-# Office software
-#####################################################################
-
-installObsidian()
-{
-  startCommandGroup "Install Obsidian"
-  flatpak install flathub md.obsidian.Obsidian -y
-  endCommandGroup "Install Obsidian"
-}
-
-installApostrophe()
-{
-  startCommandGroup "Install Apostrophe"
-  sudo dnf install apostrophe -y
-  endCommandGroup "Install Apostrophe"
-}
-
-#####################################################################
-# Creativity software
-#####################################################################
-
-installGimp()
-{
-  startCommandGroup "Install Gimp"
-  flatpak install flathub org.gimp.GIMP -y
-  endCommandGroup "Install Gimp"
-}
-
-installKdenlive()
-{
-  startCommandGroup "Install Kdenlive"
-  flatpak install flathub org.kde.kdenlive -y
-  endCommandGroup "Install Kdenlive"
-}
-
-installAudacity()
-{
-  startCommandGroup "Install Audacity"
-  flatpak install flathub org.audacityteam.Audacity -y
-  endCommandGroup "Install Audacity"
-}
-
-installSwitcheroo()
-{
-  startCommandGroup "Install Switcheroo"
-  flatpak install flathub io.gitlab.adhami3310.Converter -y
-  endCommandGroup "Install Switcheroo"
-}
-
-installPipeline()
-{
-  startCommandGroup "Install Pipeline"
-  flatpak install flathub de.schmidhuberj.tubefeeder -y
-  endCommandGroup "Install Pipeline"
-}
-
-#####################################################################
 # Virtualization software
 #####################################################################
 
@@ -258,11 +111,48 @@ installDistrobox()
   endCommandGroup "Install Distrobox"
 }
 
-installBoxBuddy()
+#####################################################################
+# Development software
+#####################################################################
+
+installGithubTool()
 {
-  startCommandGroup "Install BoxBuddy"
-  flatpak install flathub io.github.dvlv.boxbuddyrs -y
-  endCommandGroup "Install BoxBuddy"
+  startCommandGroup "Install Github tool"
+  sudo dnf install gh -y
+  endCommandGroup "Install Github tool"
+}
+
+installVSCode()
+{
+  startCommandGroup "Install VS Code"
+  sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+  printf "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee -a /etc/yum.repos.d/vscode.repo
+  sudo dnf install code -y
+  mkdir -p ~/.config/Code/User/
+  cp ../Code/settings.json ~/.config/Code/User/settings.json
+  endCommandGroup "Install VS Code"
+}
+
+installDotNetSdk()
+{
+  startCommandGroup "Install .Net SDK"
+  sudo dnf install dotnet-sdk-10.0 -y
+  endCommandGroup "Install .Net SDK"
+}
+
+installCppSDK()
+{
+  startCommandGroup "Install C++ environment"
+  sudo dnf install gcc gcc-c++ gdb cmake clang autoconf automake -y
+  endCommandGroup "Install C++ environment"
+}
+
+installThonny()
+{
+  startCommandGroup "Install Thonny"
+  sudo dnf install thonny -y
+  sudo usermod -aG dialout $(whoami)
+  endCommandGroup "Install Thonny"
 }
 
 #####################################################################

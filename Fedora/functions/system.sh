@@ -27,13 +27,6 @@ setupRpmFusion()
   endCommandGroup "Setup rpmfusion"
 }
 
-setupFlathub()
-{
-  startCommandGroup "Setup Flathub"
-  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-  endCommandGroup "Setup Flathub"
-}
-
 updateSystem()
 {
   startCommandGroup "Update system"
@@ -45,7 +38,7 @@ setupAutoUpdates()
 {
   startCommandGroup "Setup auto-updates"
   sudo dnf install dnf-automatic -y
-  echo "[commands]\napply_updates=True\nreboot=when-needed" | sudo tee -a /etc/dnf/automatic.conf
+  echo -e "[commands]\napply_updates=True\nreboot=when-needed" | sudo tee -a /etc/dnf/automatic.conf
   sudo systemctl enable --now dnf-automatic.timer
   endCommandGroup "Setup auto-updates"
 }

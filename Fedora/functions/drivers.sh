@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-installNVidia()
+installNVidiaDriver()
 {
   startCommandGroup "Enable nvidia drivers repository"
   sudo dnf install fedora-workstation-repositories -y
@@ -15,4 +15,11 @@ installNVidia()
   startCommandGroup "Install drivers"
   sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda -y
   endCommandGroup "Install drivers"
+}
+
+installBroadcomDriver()
+{
+  startCommandGroup "Install Broadcom driver"
+  sudo dnf install broadcom-wl -y
+  endCommandGroup "Install Broadcom driver"
 }

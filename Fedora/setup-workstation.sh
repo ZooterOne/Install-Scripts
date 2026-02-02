@@ -1,20 +1,45 @@
 #!/bin/bash
 
+source "../Common/common.sh"
+source "../Common/fonts.sh"
+source "../Common/shell.sh"
+source "../Common/software.sh"
+source "../Flathub/system.sh"
+source "../Flathub/software.sh"
+
 source "functions/common.sh"
 source "functions/system.sh"
-source "functions/nvidia.sh"
-source "functions/fonts.sh"
+source "functions/drivers.sh"
 source "functions/shell.sh"
 source "functions/software.sh"
 source "functions/gnome.sh"
-source "functions/dev.sh"
 
 
 #####################################################################
 # Menus
 #####################################################################
 
-showDevEnvironment()
+showDrivers()
+{
+  while true; do
+    clear
+    echo -e "\e[35mFedora post-installation scripts.\e[0m"
+    echo -e "Extra drivers installation."
+    PS3="Select an option to install: "
+    options=("NVidia driver." \
+      "Macbook Air Wifi.")
+    select option in "${options[@]}" "Back."; do
+      case "$option" in
+        "${options[0]}") installNVidiaDriver; sleep 3; break;;
+        "${options[1]}") installBroadcomDriver; sleep 3; break;;
+        "Back.") return;;
+        *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
+      esac
+    done
+  done
+}
+
+showDevSoftware()
 {
   while true; do
     clear
@@ -45,7 +70,7 @@ showFlatpakSoftware()
  while true; do
     clear
     echo -e "\e[35mFedora post-installation scripts.\e[0m"
-    echo -e "Extra Flatpak tools installation."
+    echo -e "Flatpak tools installation."
     PS3="Select an option to install: "
     options=("Warehouse." \
       "Flatseal." \
@@ -67,12 +92,11 @@ showSystemSoftware()
  while true; do
     clear
     echo -e "\e[35mFedora post-installation scripts.\e[0m"
-    echo -e "Extra system software installation."
+    echo -e "System software installation."
     PS3="Select an option to install: "
     options=("Fastfetch." \
       "Btop." \
-      "MissionCenter." \
-      "Macbook Air Wifi.")
+      "MissionCenter.")
     select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installFastfetch;
@@ -81,7 +105,6 @@ showSystemSoftware()
                          sleep 3; break;;
         "${options[1]}") installBtop; sleep 3; break;;
         "${options[2]}") installMissionCenter; sleep 3; break;;
-        "${options[3]}") installBroadcomDriver; sleep 3; break;;
         "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
@@ -94,7 +117,7 @@ showNetworkSoftware()
  while true; do
     clear
     echo -e "\e[35mFedora post-installation scripts.\e[0m"
-    echo -e "Extra network software installation."
+    echo -e "Network software installation."
     PS3="Select an option to install: "
     options=("Nmap." \
       "Iftop." \
@@ -118,7 +141,7 @@ showOfficeSoftware()
  while true; do
     clear
     echo -e "\e[35mFedora post-installation scripts.\e[0m"
-    echo -e "Extra office software installation."
+    echo -e "Office software installation."
     PS3="Select an option to install: "
     options=("Obsidian." \
       "Apostrophe.")
@@ -138,7 +161,7 @@ showCreativitySoftware()
  while true; do
     clear
     echo -e "\e[35mFedora post-installation scripts.\e[0m"
-    echo -e "Extra creativity software installation."
+    echo -e "Creativity software installation."
     PS3="Select an option to install: "
     options=("Gimp." \
       "Kdenlive." \
@@ -164,7 +187,7 @@ showVirtualizationSoftware()
   while true; do
     clear
     echo -e "\e[35mFedora post-installation scripts.\e[0m"
-    echo -e "Extra virtualization software installation."
+    echo -e "Virtualization software installation."
     PS3="Select an option to install: "
     options=("Virtualbox." \
       "Distrobox." \
@@ -186,7 +209,7 @@ showAISoftware()
   while true; do
     clear
     echo -e "\e[35mFedora post-installation scripts.\e[0m"
-    echo -e "Extra AI software installation."
+    echo -e "AI software installation."
     PS3="Select an option to install: "
     options=("Ollama." \
       "Gpt-Oss Model." \
@@ -215,6 +238,7 @@ showExtraSoftware()
       "Network software." \
       "Office software." \
       "Creativity software." \
+      "Development software." \
       "Virtualization software." \
       "AI software.")
     select option in "${options[@]}" "Back."; do
@@ -224,8 +248,9 @@ showExtraSoftware()
         "${options[2]}") showNetworkSoftware; sleep 3; break;;
         "${options[3]}") showOfficeSoftware; sleep 3; break;;
         "${options[4]}") showCreativitySoftware; sleep 3; break;;
-        "${options[5]}") showVirtualizationSoftware; sleep 3; break;;
-        "${options[6]}") showAISoftware; sleep 3; break;;
+        "${options[5]}") showDevSoftware; sleep 3; break;;
+        "${options[6]}") showVirtualizationSoftware; sleep 3; break;;
+        "${options[7]}") showAISoftware; sleep 3; break;;
         "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
@@ -243,12 +268,7 @@ while true; do
   echo
   PS3="Select an option to run: "
   options=("System setup." \
-    "Setup NVidia drivers." \
-    "Setup fonts." \
-    "Setup Terminal." \
-    "Setup base software." \
-    "Configure Gnome." \
-    "Install dev environment." \
+    "Install extra drivers." \
     "Install extra software.")
   select option in "${options[@]}" "Quit."; do
     case "$option" in
@@ -257,25 +277,25 @@ while true; do
                        setupRpmFusion;
                        setupFlathub;
                        updateSystem;
-                       sleep 3; break;;
-      "${options[1]}") installNVidia; sleep 3; break;;
-      "${options[2]}") installDaddyTimeFonts;
+                       installDaddyTimeFonts;
                        installHurmitFonts;
                        refreshFontCache;
-                       sleep 3; break;;
-      "${options[3]}") installFish;
+                       installFish;
                        installStarship;
+                       setupStarship;
+                       setupStarshipFish;
                        installAlacritty;
+                       setupAlacritty;
                        installEza;
-                       setupEzaAlias;
-                       sleep 3; break;;
-      "${options[4]}") setupFirefox;
+                       setupEza;
+                       setupEzaFishAlias;
+                       setupFirefox;
                        installHEIC;
                        installVLC;
+                       configureGnome;
                        sleep 3; break;;
-      "${options[5]}") configureGnome; sleep 3; break;;
-      "${options[6]}") showDevEnvironment; break;;
-      "${options[7]}") showExtraSoftware; break;;
+      "${options[1]}") showDrivers; sleep 3; break;;
+      "${options[2]}") showExtraSoftware; break;;
       "Quit.") exit;;
       *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid option.\e[0m";
     esac
