@@ -5,6 +5,7 @@ source "../Common/shell.sh"
 source "../Common/software.sh"
 
 source "functions/system.sh"
+source "functions/software.sh"
 
 
 while true; do
@@ -18,6 +19,9 @@ while true; do
     case "$option" in
       "${options[0]}") updateSystem;
                        installDefaultSoftware;
+                       installEza;
+                       setupEza;
+                       setupEzaBashAliasNoIcons;
                        sleep 3; break;;
       "${options[1]}") installWebHackingSoftware; sleep 3; break;;
       "Quit.") exit;;

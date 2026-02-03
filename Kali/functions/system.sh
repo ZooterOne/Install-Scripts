@@ -15,11 +15,9 @@ installDefaultSoftware()
   endCommandGroup "Install default software"
 }
 
-installWebHackingSoftware()
+installEza()
 {
-  startCommandGroup "Install web hacking software"
-  sudo apt install dirb dirbuster gobuster whois wordlists -y
-  sudo apt install proxychains zaproxy wfuzz ffuf -y
-  installPostman
-  endCommandGroup "Install web hacking software"
+  startCommandGroup "Install Eza"
+  sudo apt install eza -y
+  endCommandGroup "Install Eza"
 }
