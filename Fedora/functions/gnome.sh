@@ -4,7 +4,7 @@
 configureGnome()
 {
   startCommandGroup "Install Gnome add-ons"
-  sudo dnf install gnome-extensions-app gnome-tweaks pop-icon-theme -y
+  sudo dnf install gnome-extensions-app gnome-tweaks pop-icon-theme gnome-themes-extra -y
   endCommandGroup "Install Gnome add-ons"
 
   startCommandGroup "Install Gnome extensions"
@@ -15,6 +15,7 @@ configureGnome()
   gsettings set org.gnome.desktop.interface clock-format '24h'
   gsettings set org.gnome.desktop.interface show-battery-percentage true
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+  gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
   gsettings set org.gnome.desktop.interface cursor-theme 'Pop'
   gsettings set org.gnome.desktop.interface icon-theme 'Pop'
   gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
