@@ -1,12 +1,12 @@
 #!/bin/bash
 
-source "../Common/common.sh"
-source "../Common/shell.sh"
-source "../Common/software.sh"
+source "./Common/common.sh"
+source "./Common/shell.sh"
+source "./Common/software.sh"
 
-source "functions/system.sh"
-source "functions/shell.sh"
-source "functions/software.sh"
+source "./Fedora/system.sh"
+source "./Fedora/shell.sh"
+source "./Fedora/software.sh"
 
 
 while true; do

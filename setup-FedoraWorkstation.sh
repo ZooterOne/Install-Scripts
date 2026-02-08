@@ -1,18 +1,18 @@
 #!/bin/bash
 
-source "../Common/common.sh"
-source "../Common/fonts.sh"
-source "../Common/shell.sh"
-source "../Common/software.sh"
-source "../Flathub/system.sh"
-source "../Flathub/software.sh"
+source "./Common/common.sh"
+source "./Common/fonts.sh"
+source "./Common/shell.sh"
+source "./Common/software.sh"
+source "./Flathub/system.sh"
+source "./Flathub/software.sh"
 
-source "functions/common.sh"
-source "functions/system.sh"
-source "functions/drivers.sh"
-source "functions/shell.sh"
-source "functions/software.sh"
-source "functions/gnome.sh"
+source "./Fedora/common.sh"
+source "./Fedora/system.sh"
+source "./Fedora/drivers.sh"
+source "./Fedora/shell.sh"
+source "./Fedora/software.sh"
+source "./Fedora/gnome.sh"
 
 
 #####################################################################
@@ -50,7 +50,8 @@ showDevSoftware()
       "VS Code." \
       ".Net SDK." \
       "C++ tools." \
-      "Raspberry PI tools.")
+      "Raspberry PI tools." \
+      "Dev Toolbox.")
     select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installGithubTool; sleep 3; break;;
@@ -58,6 +59,7 @@ showDevSoftware()
         "${options[2]}") installDotNetSdk; sleep 3; break;;
         "${options[3]}") installCppSDK; sleep 3; break;;
         "${options[4]}") installThonny; sleep 3; break;;
+        "${options[5]}") installDevToolbox; sleep 3; break;;
         "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac

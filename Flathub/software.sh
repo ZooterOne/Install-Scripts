@@ -79,3 +79,14 @@ installBoxBuddy()
   flatpak install flathub io.github.dvlv.boxbuddyrs -y
   endCommandGroup "Install BoxBuddy"
 }
+
+#####################################################################
+# Development software
+#####################################################################
+
+installDevToolbox()
+{
+  startCommandGroup "Install DevToolbox"
+  flatpak install flathub me.iepure.devtoolbox -y
+  endCommandGroup "Install DevToolbox"
+}

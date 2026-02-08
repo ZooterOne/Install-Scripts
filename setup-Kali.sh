@@ -1,11 +1,11 @@
 #!/bin/bash
 
-source "../Common/common.sh"
-source "../Common/shell.sh"
-source "../Common/software.sh"
+source "./Common/common.sh"
+source "./Common/shell.sh"
+source "./Common/software.sh"
 
-source "functions/system.sh"
-source "functions/software.sh"
+source "./Kali/system.sh"
+source "./Kali/software.sh"
 
 
 while true; do
