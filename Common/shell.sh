@@ -22,7 +22,7 @@ installFishTide()
 setupStarship()
 {
   startCommandGroup "Setup starship"
-  cp ../Starship/starship.toml ~/.config/starship.toml
+  cp ./Starship/starship.toml ~/.config/starship.toml
   endCommandGroup "Setup starship"
 }
 
@@ -44,7 +44,7 @@ setupAlacritty()
 {
   startCommandGroup "Setup Alacritty"
   mkdir ~/.config/alacritty
-  cp ../Alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
+  cp ./Alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
   endCommandGroup "Setup Alacritty"
 }
 
@@ -52,7 +52,7 @@ setupEza()
 {
   startCommandGroup "Setup eza"
   mkdir ~/.config/eza
-  cp ../Eza/one_dark.yml ~/.config/eza/theme.yml
+  cp ./Eza/one_dark.yml ~/.config/eza/theme.yml
   endCommandGroup "Setup eza"
 }
 

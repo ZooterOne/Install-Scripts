@@ -97,6 +97,7 @@ showSystemSoftware()
     echo -e "System software installation."
     PS3="Select an option to install: "
     options=("Fastfetch." \
+      "Grub theme." \
       "Btop." \
       "MissionCenter.")
     select option in "${options[@]}" "Back."; do
@@ -105,8 +106,9 @@ showSystemSoftware()
                          setupFastfetch;
                          setupAlacrittyFastfetch;
                          sleep 3; break;;
-        "${options[1]}") installBtop; sleep 3; break;;
-        "${options[2]}") installMissionCenter; sleep 3; break;;
+        "${options[1]}") setupGrub; sleep 3; break;;
+        "${options[2]}") installBtop; sleep 3; break;;
+        "${options[3]}") installMissionCenter; sleep 3; break;;
         "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac

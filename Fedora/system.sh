@@ -42,3 +42,15 @@ setupAutoUpdates()
   sudo systemctl enable --now dnf-automatic.timer
   endCommandGroup "Setup auto-updates"
 }
+
+setupGrub()
+{
+  startCommandGroup "Setup Grub"
+  git clone https://github.com/AdisonCavani/distro-grub-themes ~/Downloads/Grub
+  sudo mkdir -p /boot/grub2/themes/fedora
+  sudo tar -C /boot/grub2/themes/fedora -xf ~/Downloads/Grub/themes/fedora.tar
+  rm -rf ~/Downloads/Grub
+  sudo cp ./Grub/grub-fedora /etc/default/grub
+  sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+  endCommandGroup "Setup Grub"
+}

@@ -14,7 +14,7 @@ setupFastfetch()
 {
   startCommandGroup "Setup Fastfetch"
   mkdir ~/.config/fastfetch
-  cp ../Fastfetch/config.jsonc ~/.config/fastfetch/
+  cp ./Fastfetch/config.jsonc ~/.config/fastfetch/
   endCommandGroup "Setup Fastfetch"
 }
 
@@ -22,7 +22,7 @@ setupFastfetchNoIcons()
 {
   startCommandGroup "Setup Fastfetch"
   mkdir ~/.config/fastfetch
-  cp ../Fastfetch/config-simple.jsonc ~/.config/fastfetch/config.jsonc
+  cp ./Fastfetch/config-simple.jsonc ~/.config/fastfetch/config.jsonc
   endCommandGroup "Setup Fastfetch"
 }
 
@@ -31,7 +31,7 @@ setupAlacrittyFastfetch()
   startCommandGroup "Install Fastfetch on Alacritty"
   installedCommandCheck alacritty
   if [ $? -eq 0 ]; then
-    cp ../Alacritty/alacritty_fastfetch.toml ~/.config/alacritty/alacritty.toml
+    cp ./Alacritty/alacritty_fastfetch.toml ~/.config/alacritty/alacritty.toml
   else
     false
   fi
