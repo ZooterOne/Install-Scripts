@@ -155,6 +155,14 @@ installThonny()
   endCommandGroup "Install Thonny"
 }
 
+installLazyGit()
+{
+  startCommandGroup "Install LazyGit"
+  sudo dnf copr enable dejan/lazygit -y
+  sudo dnf install lazygit -y
+  endCommandGroup "Install LazyGit"
+}
+
 #####################################################################
 # AI software
 #####################################################################

@@ -47,6 +47,7 @@ showDevSoftware()
     echo -e "Dev environment installation."
     PS3="Select an option to install: "
     options=("Github tool." \
+      "LazyGit." \
       "VS Code." \
       ".Net SDK." \
       "C++ tools." \
@@ -55,11 +56,12 @@ showDevSoftware()
     select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installGithubTool; sleep 3; break;;
-        "${options[1]}") installVSCode; sleep 3; break;;
-        "${options[2]}") installDotNetSdk; sleep 3; break;;
-        "${options[3]}") installCppSDK; sleep 3; break;;
-        "${options[4]}") installThonny; sleep 3; break;;
-        "${options[5]}") installDevToolbox; sleep 3; break;;
+        "${options[1]}") installLazyGit; sleep 3; break;;
+        "${options[2]}") installVSCode; sleep 3; break;;
+        "${options[3]}") installDotNetSdk; sleep 3; break;;
+        "${options[4]}") installCppSDK; sleep 3; break;;
+        "${options[5]}") installThonny; sleep 3; break;;
+        "${options[6]}") installDevToolbox; sleep 3; break;;
         "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
