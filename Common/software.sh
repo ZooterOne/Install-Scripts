@@ -6,6 +6,7 @@ setupFirefox()
   startCommandGroup "Setup Firefox"
   firefox https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/
   firefox https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/
+  firefox https://addons.mozilla.org/en-US/firefox/addon/cookie-quick-manager/
   firefox about:preferences
   endCommandGroup "Setup Firefox"
 }
