@@ -34,6 +34,13 @@ updateSystem()
   endCommandGroup "Update system"
 }
 
+updateApps()
+{
+  startCommandGroup "Update apps"
+  flatpak update -y
+  endCommandGroup "Update apps"
+}
+
 setupAutoUpdates()
 {
   startCommandGroup "Setup auto-updates"

@@ -275,7 +275,8 @@ while true; do
   PS3="Select an option to run: "
   options=("System setup." \
     "Install extra drivers." \
-    "Install extra software.")
+    "Install extra software." \
+    "Update system and apps.")
   select option in "${options[@]}" "Quit."; do
     case "$option" in
       "${options[0]}") setupHostname;
@@ -302,6 +303,7 @@ while true; do
                        sleep 3; break;;
       "${options[1]}") showDrivers; sleep 3; break;;
       "${options[2]}") showExtraSoftware; break;;
+      "${options[3]}") updateSystem; updateApps; break;;
       "Quit.") exit;;
       *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid option.\e[0m";
     esac
