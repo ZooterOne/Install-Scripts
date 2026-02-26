@@ -162,38 +162,3 @@ installLazyGit()
   sudo dnf install lazygit -y
   endCommandGroup "Install LazyGit"
 }
-
-#####################################################################
-# AI software
-#####################################################################
-
-installOllama()
-{
-  startCommandGroup "Install Ollama"
-  sudo dnf install ollama -y
-  endCommandGroup "Install Ollama"
-}
-
-installOllamaGptModel()
-{
-  startCommandGroup "Install Gpt-Oss Model"
-  installedCommandCheck ollama
-  if [ $? -eq 0 ]; then
-    ollama pull gpt-oss:latest
-  else
-    false
-  fi
-  endCommandGroup "Install Gpt-Oss Model"
-}
-
-installOllamaDevstralModel()
-{
-  startCommandGroup "Install Devstral Model"
-  installedCommandCheck ollama
-  if [ $? -eq 0 ]; then
-    ollama pull devstral-small-2:latest
-  else
-    false
-  fi
-  endCommandGroup "Install Devstral Model"
-}

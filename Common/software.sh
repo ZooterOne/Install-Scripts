@@ -11,6 +11,10 @@ setupFirefox()
   endCommandGroup "Setup Firefox"
 }
 
+#####################################################################
+# System software
+#####################################################################
+
 setupFastfetch()
 {
   startCommandGroup "Setup Fastfetch"
@@ -53,6 +57,10 @@ setupFishFastfetch()
   endCommandGroup "Install Fastfetch on Fish"
 }
 
+#####################################################################
+# Network software
+#####################################################################
+
 installPostman()
 {
   startCommandGroup "Install Postman"
@@ -64,4 +72,29 @@ installPostman()
   echo -e "Exec=/opt/Postman/Postman\nIcon=/opt/Postman/app/icons/icon_128x128.png" | sudo tee -a /usr/share/applications/postman.desktop
   echo -e "Terminal=false\nType=Application\nCategories=Development;Network;" | sudo tee -a /usr/share/applications/postman.desktop
   endCommandGroup "Install Postman"
+}
+
+#####################################################################
+# AI software
+#####################################################################
+
+installOllama()
+{
+  startCommandGroup "Install Ollama"
+  curl -fsSL https://ollama.com/install.sh | sh
+  endCommandGroup "Install Ollama"
+}
+
+installOllamaGptModel()
+{
+  startCommandGroup "Install Gpt-Oss Model"
+  ollama pull gpt-oss:latest
+  endCommandGroup "Install Gpt-Oss Model"
+}
+
+installOllamaDevstralModel()
+{
+  startCommandGroup "Install Devstral Model"
+  ollama pull devstral-small-2:latest
+  endCommandGroup "Install Devstral Model"
 }
