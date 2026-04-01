@@ -137,6 +137,11 @@ installDotNetSdk()
 {
   startCommandGroup "Install .Net SDK"
   sudo dnf install dotnet-sdk-10.0 -y
+  installedCommandCheck code
+  if [ $? -eq 0 ]; then
+    # code --install-extension ms-dotnettools.csdevkit
+    code --install-extension JetBrains.resharper-code
+  fi
   endCommandGroup "Install .Net SDK"
 }
 
@@ -144,6 +149,10 @@ installCppSDK()
 {
   startCommandGroup "Install C++ environment"
   sudo dnf install gcc gcc-c++ gdb cmake clang autoconf automake -y
+  installedCommandCheck code
+  if [ $? -eq 0 ]; then
+    code --install-extension ms-vscode.cpptools
+  fi
   endCommandGroup "Install C++ environment"
 }
 
