@@ -219,12 +219,16 @@ showAISoftware()
     PS3="Select an option to install: "
     options=("Ollama." \
       "Gpt-Oss Model." \
-      "Devstral Model.")
+      "Devstral Model." \
+      "Qwen 3.5 Model." \
+      "Gemma 4 Model.")
     select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installOllama; sleep 3; break;;
         "${options[1]}") installOllamaGptModel; sleep 3; break;;
         "${options[2]}") installOllamaDevstralModel; sleep 3; break;;
+        "${options[3]}") installOllamaQwen35Model; sleep 3; break;;
+        "${options[4]}") installOllamaGemma4Model; sleep 3; break;;
         "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac

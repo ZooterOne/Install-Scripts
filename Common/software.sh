@@ -98,3 +98,17 @@ installOllamaDevstralModel()
   ollama pull devstral-small-2:latest
   endCommandGroup "Install Devstral Model"
 }
+
+installOllamaQwen35Model()
+{
+  startCommandGroup "Install Qwen 3.5 Model"
+  ollama pull qwen3.5:latest
+  endCommandGroup "Install Qwen 3.5 Model"
+}
+
+installOllamaGemma4Model()
+{
+  startCommandGroup "Install Gemma 4 Model"
+  ollama pull gemma4:26b
+  endCommandGroup "Install Gemma 4 Model"
+}
