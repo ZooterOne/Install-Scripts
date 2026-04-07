@@ -113,6 +113,13 @@ installOllamaQwen35LaptopModel()
   endCommandGroup "Install Qwen 3.5 Model"
 }
 
+installOllamaQwen35LowSpecsModel()
+{
+  startCommandGroup "Install Qwen 3.5 Model"
+  ollama pull qwen3.5:2b
+  endCommandGroup "Install Qwen 3.5 Model"
+}
+
 installOllamaGemma4WorkstationModel()
 {
   startCommandGroup "Install Gemma 4 Model"
@@ -124,5 +131,12 @@ installOllamaGemma4LaptopModel()
 {
   startCommandGroup "Install Gemma 4 Model"
   ollama pull gemma4:e4b
+  endCommandGroup "Install Gemma 4 Model"
+}
+
+installOllamaGemma4LowSpecsModel()
+{
+  startCommandGroup "Install Gemma 4 Model"
+  ollama pull gemma4:e2b
   endCommandGroup "Install Gemma 4 Model"
 }

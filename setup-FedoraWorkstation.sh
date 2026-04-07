@@ -51,6 +51,7 @@ showDevSoftware()
       "VS Code." \
       ".Net SDK." \
       "C++ tools." \
+      "Python SDK." \
       "Raspberry PI tools." \
       "Dev Toolbox.")
     select option in "${options[@]}" "Back."; do
@@ -58,10 +59,11 @@ showDevSoftware()
         "${options[0]}") installGithubTool; sleep 3; break;;
         "${options[1]}") installLazyGit; sleep 3; break;;
         "${options[2]}") installVSCode; sleep 3; break;;
-        "${options[3]}") installDotNetSdk; sleep 3; break;;
+        "${options[3]}") installDotNetSDK; sleep 3; break;;
         "${options[4]}") installCppSDK; sleep 3; break;;
-        "${options[5]}") installThonny; sleep 3; break;;
-        "${options[6]}") installDevToolbox; sleep 3; break;;
+        "${options[5]}") installPythonSDK; sleep 3; break;;
+        "${options[6]}") installThonny; sleep 3; break;;
+        "${options[7]}") installDevToolbox; sleep 3; break;;
         "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
@@ -219,7 +221,8 @@ showAISoftware()
     PS3="Select an option to install: "
     options=("Ollama." \
       "Workstation Models." \
-      "Laptop Models.")
+      "Laptop Models." \
+      "Low Specs Models.")
     select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installOllama; sleep 3; break;;
@@ -230,6 +233,9 @@ showAISoftware()
                          sleep 3; break;;
         "${options[2]}") installOllamaQwen35LaptopModel;
                          installOllamaGemma4LaptopModel;
+                         sleep 3; break;;
+        "${options[3]}") installOllamaQwen35LowSpecsModel;
+                         installOllamaGemma4LowSpecsModel;
                          sleep 3; break;;
         "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";

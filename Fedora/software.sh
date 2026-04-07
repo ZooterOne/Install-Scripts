@@ -130,10 +130,11 @@ installVSCode()
   sudo dnf install code -y
   mkdir -p ~/.config/Code/User/
   cp ./Code/settings.json ~/.config/Code/User/settings.json
+  code --install-extension streetsidesoftware.code-spell-checker
   endCommandGroup "Install VS Code"
 }
 
-installDotNetSdk()
+installDotNetSDK()
 {
   startCommandGroup "Install .Net SDK"
   sudo dnf install dotnet-sdk-10.0 -y
@@ -154,6 +155,17 @@ installCppSDK()
     code --install-extension ms-vscode.cpptools
   fi
   endCommandGroup "Install C++ environment"
+}
+
+installPythonSDK()
+{
+  startCommandGroup "Install Python environment"
+  sudo dnf install python3 python3-pip -y
+  installedCommandCheck code
+  if [ $? -eq 0 ]; then
+    code --install-extension ms-python.python
+  fi
+  endCommandGroup "Install Python environment"
 }
 
 installThonny()
