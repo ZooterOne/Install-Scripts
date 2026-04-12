@@ -140,7 +140,7 @@ installDotNetSDK()
   sudo dnf install dotnet-sdk-10.0 -y
   installedCommandCheck code
   if [ $? -eq 0 ]; then
-    # code --install-extension ms-dotnettools.csdevkit
+    code --install-extension ms-dotnettools.csdevkit
     code --install-extension JetBrains.resharper-code
   fi
   endCommandGroup "Install .Net SDK"
