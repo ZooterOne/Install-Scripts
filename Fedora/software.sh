@@ -131,6 +131,7 @@ installVSCode()
   mkdir -p ~/.config/Code/User/
   cp ./Code/settings.json ~/.config/Code/User/settings.json
   code --install-extension streetsidesoftware.code-spell-checker
+  code --install-extension bierner.markdown-emoji
   endCommandGroup "Install VS Code"
 }
 
