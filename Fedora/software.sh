@@ -184,3 +184,14 @@ installLazyGit()
   sudo dnf install lazygit -y
   endCommandGroup "Install LazyGit"
 }
+
+#####################################################################
+# AI software
+#####################################################################
+
+installPythonForOpenWebUI()
+{
+  startCommandGroup "Install Python 3.12"
+  sudo dnf install python3.12 -y
+  endCommandGroup "Install Python 3.12"
+}

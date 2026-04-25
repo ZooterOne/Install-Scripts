@@ -220,22 +220,18 @@ showAISoftware()
     echo -e "AI software installation."
     PS3="Select an option to install: "
     options=("Ollama." \
-      "Workstation Models." \
-      "Laptop Models." \
-      "Low Specs Models.")
+      "Ollama Models." \
+      "OpenWebUI.")
     select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installOllama; sleep 3; break;;
-        "${options[1]}") installOllamaGptModel;
-                         installOllamaDevstralModel;
-                         installOllamaQwen35WorkstationModel;
+        "${options[1]}") installOllamaQwen36Model;
+                         installOllamaQwen35Model;
                          installOllamaGemma4WorkstationModel;
-                         sleep 3; break;;
-        "${options[2]}") installOllamaQwen35LaptopModel;
                          installOllamaGemma4LaptopModel;
                          sleep 3; break;;
-        "${options[3]}") installOllamaQwen35LowSpecsModel;
-                         installOllamaGemma4LowSpecsModel;
+        "${options[2]}") installPythonForOpenWebUI;
+                         installOpenWebUI;
                          sleep 3; break;;
         "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";

@@ -85,38 +85,17 @@ installOllama()
   endCommandGroup "Install Ollama"
 }
 
-installOllamaGptModel()
+installOllamaQwen36Model()
 {
-  startCommandGroup "Install Gpt-Oss Model"
-  ollama pull gpt-oss:latest
-  endCommandGroup "Install Gpt-Oss Model"
+  startCommandGroup "Install Qwen 3.6 Model"
+  ollama pull qwen3.6:35b
+  endCommandGroup "Install Qwen 3.6 Model"
 }
 
-installOllamaDevstralModel()
-{
-  startCommandGroup "Install Devstral Model"
-  ollama pull devstral-small-2:latest
-  endCommandGroup "Install Devstral Model"
-}
-
-installOllamaQwen35WorkstationModel()
+installOllamaQwen35Model()
 {
   startCommandGroup "Install Qwen 3.5 Model"
-  ollama pull qwen3.5:latest
-  endCommandGroup "Install Qwen 3.5 Model"
-}
-
-installOllamaQwen35LaptopModel()
-{
-  startCommandGroup "Install Qwen 3.5 Model"
-  ollama pull qwen3.5:4b
-  endCommandGroup "Install Qwen 3.5 Model"
-}
-
-installOllamaQwen35LowSpecsModel()
-{
-  startCommandGroup "Install Qwen 3.5 Model"
-  ollama pull qwen3.5:2b
+  ollama pull qwen3.5:9b
   endCommandGroup "Install Qwen 3.5 Model"
 }
 
@@ -134,9 +113,9 @@ installOllamaGemma4LaptopModel()
   endCommandGroup "Install Gemma 4 Model"
 }
 
-installOllamaGemma4LowSpecsModel()
+installOpenWebUI()
 {
-  startCommandGroup "Install Gemma 4 Model"
-  ollama pull gemma4:e2b
-  endCommandGroup "Install Gemma 4 Model"
+  startCommandGroup "Install OpenWebUI"
+  cp -r ./OpenWebUI ~/Documents/
+  endCommandGroup "Install OpenWebUI"
 }
