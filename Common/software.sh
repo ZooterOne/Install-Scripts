@@ -99,23 +99,25 @@ installOllamaQwen35Model()
   endCommandGroup "Install Qwen 3.5 Model"
 }
 
-installOllamaGemma4WorkstationModel()
+installOllamaGemma4Models()
 {
-  startCommandGroup "Install Gemma 4 Model"
-  ollama pull gemma4:26b
-  endCommandGroup "Install Gemma 4 Model"
-}
-
-installOllamaGemma4LaptopModel()
-{
-  startCommandGroup "Install Gemma 4 Model"
+  startCommandGroup "Install Gemma 4 Models"
   ollama pull gemma4:e4b
-  endCommandGroup "Install Gemma 4 Model"
+  ollama pull gemma4:26b
+  endCommandGroup "Install Gemma 4 Models"
 }
 
 installOpenWebUI()
 {
-  startCommandGroup "Install OpenWebUI"
-  cp -r ./OpenWebUI ~/Documents/
-  endCommandGroup "Install OpenWebUI"
+  startCommandGroup "Install Open WebUI"
+  sudo mkdir -p /opt/OpenWebUI
+  sudo chmod a+rwx /opt/OpenWebUI
+  cp ./OpenWebUI/* /opt/OpenWebUI/
+  mv /opt/OpenWebUI/open-webui.desktop ~/.local/share/applications/
+  cd /opt/OpenWebUI
+  python3.12 -m venv .venv
+  source .venv/bin/activate
+  pip install open-webui
+  deactivate  
+  endCommandGroup "Install Open WebUI"
 }
