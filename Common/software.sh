@@ -129,7 +129,7 @@ installOpenWebUI()
   echo -e "[Desktop Entry]\nName=Open WebUI\nIcon=/opt/OpenWebUI/open-webui.png" | tee ~/.local/share/applications/openwebui.desktop >/dev/null
   echo -e "Exec=/opt/OpenWebUI/run.sh\nTerminal=true" | tee -a ~/.local/share/applications/openwebui.desktop >/dev/null
   echo -e "Type=Application\nCategories=AI;Development" | tee -a ~/.local/share/applications/openwebui.desktop >/dev/null
-  echo -e "#!/bin/bash\n\nINSTALL_DIRECTORY=/opt/OpenWebUI\n\ncd $INSTALL_DIRECTORY\n" | tee /opt/OpenWebUI/run.sh >/dev/null
+  echo -e "#!/bin/bash\n\ncd /opt/OpenWebUI\n" | tee /opt/OpenWebUI/run.sh >/dev/null
   echo -e "source .venv/bin/activate\npip install -U open-webui\nopen-webui serve\ndeactivate" | tee -a /opt/OpenWebUI/run.sh >/dev/null
   chmod a+x /opt/OpenWebUI/run.sh
   endCommandGroup "Install Open WebUI"
