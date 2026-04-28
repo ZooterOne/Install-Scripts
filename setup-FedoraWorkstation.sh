@@ -221,15 +221,18 @@ showAISoftware()
     PS3="Select an option to install: "
     options=("Ollama." \
       "Ollama Models." \
+      "AnythingLLM." \
       "Open WebUI.")
     select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installOllama; sleep 3; break;;
-        "${options[1]}") installOllamaQwen36Model;
-                         installOllamaQwen35Model;
-                         installOllamaGemma4Models;
+        "${options[1]}") installOllamaQwenModels;
+                         installOllamaGemmaModels;
                          sleep 3; break;;
-        "${options[2]}") installPythonForOpenWebUI;
+        "${options[2]}") enableAppImage;
+                         installAnythingLLM;
+                         sleep 3; break;;
+        "${options[3]}") installPythonForOpenWebUI;
                          installOpenWebUI;
                          sleep 3; break;;
         "Back.") return;;

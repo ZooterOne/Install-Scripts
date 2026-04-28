@@ -85,26 +85,34 @@ installOllama()
   endCommandGroup "Install Ollama"
 }
 
-installOllamaQwen36Model()
+installOllamaQwenModels()
 {
-  startCommandGroup "Install Qwen 3.6 Model"
-  ollama pull qwen3.6:35b
-  endCommandGroup "Install Qwen 3.6 Model"
-}
-
-installOllamaQwen35Model()
-{
-  startCommandGroup "Install Qwen 3.5 Model"
+  startCommandGroup "Install Qwen Models"
   ollama pull qwen3.5:9b
-  endCommandGroup "Install Qwen 3.5 Model"
+  ollama pull qwen3.6:35b
+  endCommandGroup "Install Qwen Models"
 }
 
-installOllamaGemma4Models()
+installOllamaGemmaModels()
 {
-  startCommandGroup "Install Gemma 4 Models"
+  startCommandGroup "Install Gemma Models"
   ollama pull gemma4:e4b
   ollama pull gemma4:26b
-  endCommandGroup "Install Gemma 4 Models"
+  endCommandGroup "Install Gemma Models"
+}
+
+installAnythingLLM()
+{
+  startCommandGroup "Install AnythingLLM"
+  sudo mkdir -p /opt/AnythingLLM
+  sudo chmod a+rwx /opt/AnythingLLM
+  wget --directory-prefix /opt/AnythingLLM https://cdn.anythingllm.com/latest/AnythingLLMDesktop.AppImage
+  chmod a+x /opt/AnythingLLM/AnythingLLMDesktop.AppImage
+  wget -O /opt/AnythingLLM/anything-llm.png https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/anything-llm-light.png
+  echo -e "[Desktop Entry]\nName=AnythingLLM\nIcon=/opt/AnythingLLM/anything-llm.png" | tee ~/.local/share/applications/anythingllm.desktop >/dev/null
+  echo -e "Exec=/opt/AnythingLLM/AnythingLLMDesktop.AppImage\nStartupWMClass=anythingllm-desktop" | tee -a ~/.local/share/applications/anythingllm.desktop >/dev/null
+  echo -e "Type=Application\nCategories=AI;Development" | tee -a ~/.local/share/applications/anythingllm.desktop >/dev/null
+  endCommandGroup "Install AnythingLLM"
 }
 
 installOpenWebUI()
@@ -112,12 +120,17 @@ installOpenWebUI()
   startCommandGroup "Install Open WebUI"
   sudo mkdir -p /opt/OpenWebUI
   sudo chmod a+rwx /opt/OpenWebUI
-  cp ./OpenWebUI/* /opt/OpenWebUI/
-  mv /opt/OpenWebUI/open-webui.desktop ~/.local/share/applications/
   cd /opt/OpenWebUI
   python3.12 -m venv .venv
   source .venv/bin/activate
   pip install open-webui
-  deactivate  
+  deactivate
+  wget -O /opt/OpenWebUI/open-webui.png https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/open-webui-light.png
+  echo -e "[Desktop Entry]\nName=Open WebUI\nIcon=/opt/OpenWebUI/open-webui.png" | tee ~/.local/share/applications/openwebui.desktop >/dev/null
+  echo -e "Exec=/opt/OpenWebUI/run.sh\nTerminal=true" | tee -a ~/.local/share/applications/openwebui.desktop >/dev/null
+  echo -e "Type=Application\nCategories=AI;Development" | tee -a ~/.local/share/applications/openwebui.desktop >/dev/null
+  echo -e "#!/bin/bash\n\nINSTALL_DIRECTORY=/opt/OpenWebUI\n\ncd $INSTALL_DIRECTORY\n" | tee /opt/OpenWebUI/run.sh >/dev/null
+  echo -e "source .venv/bin/activate\npip install -U open-webui\nopen-webui serve\ndeactivate" | tee -a /opt/OpenWebUI/run.sh >/dev/null
+  chmod a+x /opt/OpenWebUI/run.sh
   endCommandGroup "Install Open WebUI"
 }
