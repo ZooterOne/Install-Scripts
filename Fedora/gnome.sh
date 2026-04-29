@@ -8,7 +8,7 @@ configureGnome()
   endCommandGroup "Install Gnome add-ons"
 
   startCommandGroup "Install Gnome extensions"
-  sudo dnf install gnome-shell-extension-pop-shell gnome-shell-extension-blur-my-shell -y
+  sudo dnf install gnome-shell-extension-appindicator gnome-shell-extension-pop-shell gnome-shell-extension-blur-my-shell -y
   endCommandGroup "Install Gnome extensions"
 
   startCommandGroup "Setup Gnome interface"
@@ -41,7 +41,7 @@ configureGnome()
   endCommandGroup "Setup Gnome Touchpad"
 
   startCommandGroup "Setup Gnome extensions"
-  gsettings set org.gnome.shell enabled-extensions "['background-logo@fedorahosted.org', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'pop-shell@system76.com', 'blur-my-shell@aunetx']"
+  gsettings set org.gnome.shell enabled-extensions "['background-logo@fedorahosted.org', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'appindicatorsupport@rgcjonas.gmail.com', 'pop-shell@system76.com', 'blur-my-shell@aunetx']"
   gsettings set org.gnome.shell favorite-apps "['org.mozilla.firefox.desktop', 'Alacritty.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']"
   gsettings set org.fedorahosted.background-logo-extension logo-always-visible true
   gsettings set org.fedorahosted.background-logo-extension logo-border 7
