@@ -22,9 +22,9 @@ configureGnome()
   endCommandGroup "Setup Gnome interface"
 
   startCommandGroup "Setup Gnome fonts"
-  gsettings set org.gnome.desktop.interface document-font-name 'MartianMono Nerd Font 11'
-  gsettings set org.gnome.desktop.interface font-name 'MartianMono Nerd Font 11'
-  gsettings set org.gnome.desktop.interface monospace-font-name 'MartianMono Nerd Font 10'
+  gsettings set org.gnome.desktop.interface document-font-name 'MartianMono Nerd Font 10'
+  gsettings set org.gnome.desktop.interface font-name 'MartianMono Nerd Font 10'
+  gsettings set org.gnome.desktop.interface monospace-font-name 'MartianMono Nerd Font Mono 10'
   gsettings set org.gnome.desktop.wm.preferences titlebar-font 'MartianMono Nerd Font Bold 11'
   endCommandGroup "Setup Gnome fonts"
 
