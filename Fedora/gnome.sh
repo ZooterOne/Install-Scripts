@@ -4,7 +4,7 @@
 configureGnome()
 {
   startCommandGroup "Install Gnome add-ons"
-  sudo dnf install gnome-extensions-app gnome-tweaks pop-icon-theme gnome-themes-extra -y
+  sudo dnf install gnome-extensions-app gnome-tweaks breeze-cursor-theme papirus-icon-theme-dark gnome-themes-extra -y
   endCommandGroup "Install Gnome add-ons"
 
   startCommandGroup "Install Gnome extensions"
@@ -16,16 +16,16 @@ configureGnome()
   gsettings set org.gnome.desktop.interface show-battery-percentage true
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
   gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-  gsettings set org.gnome.desktop.interface cursor-theme 'Pop'
-  gsettings set org.gnome.desktop.interface icon-theme 'Pop'
+  gsettings set org.gnome.desktop.interface cursor-theme 'breeze_cursors'
+  gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
   gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
   endCommandGroup "Setup Gnome interface"
 
   startCommandGroup "Setup Gnome fonts"
-  gsettings set org.gnome.desktop.interface document-font-name 'DaddyTimeMono Nerd Font 11'
-  gsettings set org.gnome.desktop.interface font-name 'DaddyTimeMono Nerd Font 11'
-  gsettings set org.gnome.desktop.interface monospace-font-name 'DaddyTimeMono Nerd Font 10'
-  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'DaddyTimeMono Nerd Font Bold 11'
+  gsettings set org.gnome.desktop.interface document-font-name 'MartianMono Nerd Font 11'
+  gsettings set org.gnome.desktop.interface font-name 'MartianMono Nerd Font 11'
+  gsettings set org.gnome.desktop.interface monospace-font-name 'MartianMono Nerd Font 10'
+  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'MartianMono Nerd Font Bold 11'
   endCommandGroup "Setup Gnome fonts"
 
   startCommandGroup "Setup Gnome privacy"

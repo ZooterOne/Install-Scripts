@@ -294,7 +294,7 @@ while true; do
                        setupRpmFusion;
                        setupFlathub;
                        updateSystem;
-                       installDaddyTimeFonts;
+                       installMartianFonts;
                        installHurmitFonts;
                        refreshFontCache;
                        installFish;
