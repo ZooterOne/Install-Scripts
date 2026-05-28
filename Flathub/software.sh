@@ -26,8 +26,15 @@ installObsidian()
 installApostrophe()
 {
   startCommandGroup "Install Apostrophe"
-  sudo dnf install apostrophe -y
+  flatpak install flathub org.gnome.gitlab.somas.Apostrophe -y
   endCommandGroup "Install Apostrophe"
+}
+
+installEloquent()
+{
+  startCommandGroup "Install Eloquent"
+  flatpak install flathub re.sonny.Eloquent -y
+  endCommandGroup "Install Eloquent"
 }
 
 #####################################################################
@@ -60,6 +67,13 @@ installSwitcheroo()
   startCommandGroup "Install Switcheroo"
   flatpak install flathub io.gitlab.adhami3310.Converter -y
   endCommandGroup "Install Switcheroo"
+}
+
+installDefuse()
+{
+  startCommandGroup "Install Defuse"
+  flatpak install flathub io.github.shonebinu.Defuse -y
+  endCommandGroup "Install Defuse"
 }
 
 installPipeline()

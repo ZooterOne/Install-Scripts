@@ -21,6 +21,11 @@ configureGnome()
   gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
   endCommandGroup "Setup Gnome interface"
 
+  startCommandGroup "Setup Gnome wallpaper"
+  sudo cp ./Wallpaper/Antibes-Port-Olivette.jxl /usr/share/backgrounds/
+  gsettings set org.gnome.desktop.background picture-uri-dark 'file:///usr/share/backgrounds/Antibes-Port-Olivette.jxl'
+  endCommandGroup "Setup Gnome wallpaper"
+
   startCommandGroup "Setup Gnome fonts"
   gsettings set org.gnome.desktop.interface document-font-name 'MartianMono Nerd Font 10'
   gsettings set org.gnome.desktop.interface font-name 'MartianMono Nerd Font 10'

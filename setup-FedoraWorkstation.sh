@@ -152,11 +152,13 @@ showOfficeSoftware()
     echo -e "Office software installation."
     PS3="Select an option to install: "
     options=("Obsidian." \
-      "Apostrophe.")
+      "Apostrophe." \
+      "Eloquent.")
     select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installObsidian; sleep 3; break;;
         "${options[1]}") installApostrophe; sleep 3; break;;
+        "${options[2]}") installEloquent; sleep 3; break;;
         "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
@@ -175,6 +177,7 @@ showCreativitySoftware()
       "Kdenlive." \
       "Audacity." \
       "Switcheroo." \
+      "Defuse." \
       "Pipeline.")
     select option in "${options[@]}" "Back."; do
       case "$option" in
@@ -182,7 +185,8 @@ showCreativitySoftware()
         "${options[1]}") installKdenlive; sleep 3; break;;
         "${options[2]}") installAudacity; sleep 3; break;;
         "${options[3]}") installSwitcheroo; sleep 3; break;;
-        "${options[4]}") installPipeline; sleep 3; break;;
+        "${options[4]}") installDefuse; sleep 3; break;;
+        "${options[5]}") installPipeline; sleep 3; break;;
         "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
