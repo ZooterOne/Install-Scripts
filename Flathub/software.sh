@@ -104,3 +104,14 @@ installDevToolbox()
   flatpak install flathub me.iepure.devtoolbox -y
   endCommandGroup "Install DevToolbox"
 }
+
+#####################################################################
+# AI software
+#####################################################################
+
+installNewelle()
+{
+  startCommandGroup "Install DevToolbox"
+  flatpak install flathub io.github.qwersyk.Newelle -y
+  endCommandGroup "Install DevToolbox"
+}

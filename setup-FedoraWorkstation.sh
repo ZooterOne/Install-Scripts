@@ -224,14 +224,14 @@ showAISoftware()
     echo -e "AI software installation."
     PS3="Select an option to install: "
     options=("Ollama." \
-      "Ollama Models." \
+      "Newelle." \
       "AnythingLLM." \
       "Open WebUI.")
     select option in "${options[@]}" "Back."; do
       case "$option" in
         "${options[0]}") installOllama; sleep 3; break;;
-        "${options[1]}") installOllamaQwenModels;
-                         installOllamaGemmaModels;
+        "${options[1]}") installNewelle;
+                         installFlatseal;
                          sleep 3; break;;
         "${options[2]}") enableAppImage;
                          installAnythingLLM;
