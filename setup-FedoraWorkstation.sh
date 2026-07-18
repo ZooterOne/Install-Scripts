@@ -8,8 +8,8 @@ source "./Common/software.sh"
 source "./Flathub/system.sh"
 source "./Flathub/software.sh"
 
-source "./AppManager/system.sh"
-source "./AppManager/software.sh"
+source "./AppImage/system.sh"
+source "./AppImage/software.sh"
 
 source "./Fedora/system.sh"
 source "./Fedora/drivers.sh"
@@ -238,9 +238,11 @@ showAISoftware()
                          installFlatseal;
                          sleep 3; break;;
         "${options[2]}") installAppManager;
+                         enableAppImage;
                          installInvokeAI;
                          sleep 3; break;;
         "${options[3]}") installAppManager;
+                         enableAppImage;
                          installAnythingLLM;
                          sleep 3; break;;
         "${options[4]}") installPythonForOpenWebUI;

@@ -19,10 +19,10 @@ installedCommandCheck()
 {
   if [ $# -eq 0 ]; then
     return -1
-  elif [ -z "$($1 --version | grep 'command not found')" ]; then
-    return 0
-  else
+  elif [ -z "$($1 --version 2>/dev/null)" ]; then
     echo -e "\e[36m[\e[31mFAIL\e[36m] $1 not installed.\e[0m"
     return -1
+  else
+    return 0
   fi
 }

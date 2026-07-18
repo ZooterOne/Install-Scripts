@@ -61,3 +61,10 @@ setupGrub()
   sudo grub2-mkconfig -o /boot/grub2/grub.cfg
   endCommandGroup "Setup Grub"
 }
+
+enableAppImage()
+{
+  startCommandGroup "Enable AppImage"
+  sudo dnf install fuse fuse-libs
+  endCommandGroup "Enable AppImage"
+}
