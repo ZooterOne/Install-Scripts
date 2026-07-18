@@ -37,8 +37,6 @@ setupAlacrittyFastfetch()
   installedCommandCheck alacritty
   if [ $? -eq 0 ]; then
     cp ./Alacritty/alacritty_fastfetch.toml ~/.config/alacritty/alacritty.toml
-  else
-    false
   fi
   endCommandGroup "Install Fastfetch on Alacritty"
 }
@@ -83,36 +81,6 @@ installOllama()
   startCommandGroup "Install Ollama"
   curl -fsSL https://ollama.com/install.sh | sh
   endCommandGroup "Install Ollama"
-}
-
-installOllamaQwenModels()
-{
-  startCommandGroup "Install Qwen Models"
-  ollama pull qwen3.5:9b
-  ollama pull qwen3.6:35b
-  endCommandGroup "Install Qwen Models"
-}
-
-installOllamaGemmaModels()
-{
-  startCommandGroup "Install Gemma Models"
-  ollama pull gemma4:e4b
-  ollama pull gemma4:26b
-  endCommandGroup "Install Gemma Models"
-}
-
-installAnythingLLM()
-{
-  startCommandGroup "Install AnythingLLM"
-  sudo mkdir -p /opt/AnythingLLM
-  sudo chmod a+rwx /opt/AnythingLLM
-  wget --directory-prefix /opt/AnythingLLM https://cdn.anythingllm.com/latest/AnythingLLMDesktop.AppImage
-  chmod a+x /opt/AnythingLLM/AnythingLLMDesktop.AppImage
-  wget -O /opt/AnythingLLM/anything-llm.png https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/anything-llm-light.png
-  echo -e "[Desktop Entry]\nName=AnythingLLM\nIcon=/opt/AnythingLLM/anything-llm.png" | tee ~/.local/share/applications/anythingllm.desktop >/dev/null
-  echo -e "Exec=/opt/AnythingLLM/AnythingLLMDesktop.AppImage\nStartupWMClass=anythingllm-desktop" | tee -a ~/.local/share/applications/anythingllm.desktop >/dev/null
-  echo -e "Type=Application\nCategories=AI;Development" | tee -a ~/.local/share/applications/anythingllm.desktop >/dev/null
-  endCommandGroup "Install AnythingLLM"
 }
 
 installOpenWebUI()

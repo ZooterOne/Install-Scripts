@@ -111,7 +111,7 @@ installDevToolbox()
 
 installNewelle()
 {
-  startCommandGroup "Install DevToolbox"
+  startCommandGroup "Install Newelle"
   flatpak install flathub io.github.qwersyk.Newelle -y
-  endCommandGroup "Install DevToolbox"
+  endCommandGroup "Install Newelle"
 }

@@ -4,10 +4,13 @@ source "./Common/common.sh"
 source "./Common/fonts.sh"
 source "./Common/shell.sh"
 source "./Common/software.sh"
+
 source "./Flathub/system.sh"
 source "./Flathub/software.sh"
 
-source "./Fedora/common.sh"
+source "./AppManager/system.sh"
+source "./AppManager/software.sh"
+
 source "./Fedora/system.sh"
 source "./Fedora/drivers.sh"
 source "./Fedora/shell.sh"
@@ -225,6 +228,7 @@ showAISoftware()
     PS3="Select an option to install: "
     options=("Ollama." \
       "Newelle." \
+      "Invoke AI." \
       "AnythingLLM." \
       "Open WebUI.")
     select option in "${options[@]}" "Back."; do
@@ -233,10 +237,13 @@ showAISoftware()
         "${options[1]}") installNewelle;
                          installFlatseal;
                          sleep 3; break;;
-        "${options[2]}") enableAppImage;
+        "${options[2]}") installAppManager;
+                         installInvokeAI;
+                         sleep 3; break;;
+        "${options[3]}") installAppManager;
                          installAnythingLLM;
                          sleep 3; break;;
-        "${options[3]}") installPythonForOpenWebUI;
+        "${options[4]}") installPythonForOpenWebUI;
                          installOpenWebUI;
                          sleep 3; break;;
         "Back.") return;;
