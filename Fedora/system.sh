@@ -65,6 +65,6 @@ setupGrub()
 enableAppImage()
 {
   startCommandGroup "Enable AppImage"
-  sudo dnf install fuse fuse-libs
+  sudo dnf install fuse fuse-libs -y
   endCommandGroup "Enable AppImage"
 }
