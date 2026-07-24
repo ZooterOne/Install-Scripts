@@ -56,6 +56,23 @@ setupFishFastfetch()
 }
 
 #####################################################################
+# Development software
+#####################################################################
+
+setupVSCode()
+{
+  startCommandGroup "Setup VS Code"
+  mkdir -p ~/.config/Code/User/
+  cp ./Code/settings.json ~/.config/Code/User/settings.json
+  code --install-extension pkief.material-icon-theme
+  code --install-extension zhuangtongfa.Material-theme
+  code --install-extension streetsidesoftware.code-spell-checker
+  code --install-extension bierner.markdown-emoji
+  code --install-extension fabiospampinato.vscode-todo-plus
+  endCommandGroup "Setup VS Code"
+}
+
+#####################################################################
 # Network software
 #####################################################################
 

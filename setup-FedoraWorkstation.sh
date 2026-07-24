@@ -61,7 +61,9 @@ showDevSoftware()
       case "$option" in
         "${options[0]}") installGithubTool; sleep 3; break;;
         "${options[1]}") installLazyGit; sleep 3; break;;
-        "${options[2]}") installVSCode; sleep 3; break;;
+        "${options[2]}") installVSCode;
+                         setupVSCode;
+                         sleep 3; break;;
         "${options[3]}") installDotNetSDK; sleep 3; break;;
         "${options[4]}") installCppSDK; sleep 3; break;;
         "${options[5]}") installPythonSDK; sleep 3; break;;
