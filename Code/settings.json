@@ -1,4 +1,5 @@
 {
     "editor.fontFamily": "'Hurmit Nerd Font', 'Droid Sans Mono', 'monospace', monospace",
-    "workbench.colorTheme": "Monokai Dimmed"
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "One Dark Pro Darker"
 }

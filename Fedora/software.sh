@@ -130,6 +130,8 @@ installVSCode()
   sudo dnf install code -y
   mkdir -p ~/.config/Code/User/
   cp ./Code/settings.json ~/.config/Code/User/settings.json
+  code --install-extension pkief.material-icon-theme
+  code --install-extension zhuangtongfa.Material-theme
   code --install-extension streetsidesoftware.code-spell-checker
   code --install-extension bierner.markdown-emoji
   endCommandGroup "Install VS Code"
