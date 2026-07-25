@@ -289,6 +289,24 @@ showExtraSoftware()
   done
 }
 
+showDesktopEnvironment()
+{
+  while true; do
+    clear
+    echo -e "\e[35mFedora post-installation scripts.\e[0m"
+    echo -e "Desktop Environment setup."
+    PS3="Select an option to configure: "
+    options=("Gnome.")
+    select option in "${options[@]}" "Back."; do
+      case "$option" in
+        "${options[0]}") configureGnome; sleep 3; break;;
+        "Back.") return;;
+        *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
+      esac
+    done
+  done
+}
+
 #####################################################################
 # Main loop
 #####################################################################
@@ -299,6 +317,7 @@ while true; do
   echo
   PS3="Select an option to run: "
   options=("System setup." \
+    "Desktop Environment setup." \
     "Install extra drivers." \
     "Install extra software." \
     "Update system and apps.")
@@ -324,11 +343,11 @@ while true; do
                        setupFirefox;
                        installHEIC;
                        installVLC;
-                       configureGnome;
                        sleep 3; break;;
-      "${options[1]}") showDrivers; sleep 3; break;;
-      "${options[2]}") showExtraSoftware; break;;
-      "${options[3]}") updateSystem; updateApps; break;;
+      "${options[1]}") showDesktopEnvironment; sleep 3; break;;
+      "${options[2]}") showDrivers; sleep 3; break;;
+      "${options[3]}") showExtraSoftware; break;;
+      "${options[4]}") updateSystem; updateApps; break;;
       "Quit.") exit;;
       *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid option.\e[0m";
     esac

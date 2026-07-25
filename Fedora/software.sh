@@ -128,12 +128,6 @@ installVSCode()
   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
   printf "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee -a /etc/yum.repos.d/vscode.repo
   sudo dnf install code -y
-  mkdir -p ~/.config/Code/User/
-  cp ./Code/settings.json ~/.config/Code/User/settings.json
-  code --install-extension pkief.material-icon-theme
-  code --install-extension zhuangtongfa.Material-theme
-  code --install-extension streetsidesoftware.code-spell-checker
-  code --install-extension bierner.markdown-emoji
   endCommandGroup "Install VS Code"
 }
 
