@@ -1,6 +1,8 @@
 #!/bin/bash
 
 source "./Common/common.sh"
+source "./Common/cosmic.sh"
+source "./Common/gnome.sh"
 source "./Common/fonts.sh"
 source "./Common/shell.sh"
 source "./Common/software.sh"
@@ -296,10 +298,15 @@ showDesktopEnvironment()
     echo -e "\e[35mFedora post-installation scripts.\e[0m"
     echo -e "Desktop Environment setup."
     PS3="Select an option to configure: "
-    options=("Gnome.")
+    options=("Gnome." \
+      "Cosmic.")
     select option in "${options[@]}" "Back."; do
       case "$option" in
-        "${options[0]}") configureGnome; sleep 3; break;;
+        "${options[0]}") installGnomeExtensions;
+                         configureGnome;
+                         sleep 3; break;;
+        "${options[1]}") configureCosmic;
+                         sleep 3; break;;
         "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac
