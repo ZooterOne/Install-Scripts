@@ -335,7 +335,7 @@ while true; do
                        setupRpmFusion;
                        setupFlathub;
                        updateSystem;
-                       installMartianFonts;
+                       installAgaveFonts;
                        installHurmitFonts;
                        refreshFontCache;
                        installFish;

@@ -19,10 +19,10 @@ configureGnome()
   endCommandGroup "Setup Gnome wallpaper"
 
   startCommandGroup "Setup Gnome fonts"
-  gsettings set org.gnome.desktop.interface document-font-name 'MartianMono Nerd Font 10'
-  gsettings set org.gnome.desktop.interface font-name 'MartianMono Nerd Font 10'
-  gsettings set org.gnome.desktop.interface monospace-font-name 'MartianMono Nerd Font Mono 10'
-  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'MartianMono Nerd Font Bold 11'
+  gsettings set org.gnome.desktop.interface document-font-name 'Agave Nerd Font Propo 12'
+  gsettings set org.gnome.desktop.interface font-name 'Agave Nerd Font Propo 12'
+  gsettings set org.gnome.desktop.interface monospace-font-name 'Agave Nerd Font Mono 12'
+  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Agave Nerd Font Bold 12'
   endCommandGroup "Setup Gnome fonts"
 
   startCommandGroup "Setup Gnome privacy"

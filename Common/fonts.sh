@@ -28,6 +28,15 @@ installMartianFonts()
   endCommandGroup "Install Martian fonts"
 }
 
+installAgaveFonts()
+{
+  startCommandGroup "Install Agave fonts"
+  wget --directory-prefix ~/Downloads https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Agave.zip
+  sudo unzip ~/Downloads/Agave.zip -d /usr/share/fonts/Agave
+  rm -f ~/Downloads/Agave.zip
+  endCommandGroup "Install Agave fonts"
+}
+
 refreshFontCache()
 {
   startCommandGroup "Refresh font cache"
