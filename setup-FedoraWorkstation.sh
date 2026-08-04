@@ -183,6 +183,8 @@ showCreativitySoftware()
     options=("Gimp." \
       "Kdenlive." \
       "Audacity." \
+      "Inkscape." \
+      "PixiEditor." \
       "Switcheroo." \
       "Defuse." \
       "Pipeline.")
@@ -191,9 +193,11 @@ showCreativitySoftware()
         "${options[0]}") installGimp; sleep 3; break;;
         "${options[1]}") installKdenlive; sleep 3; break;;
         "${options[2]}") installAudacity; sleep 3; break;;
-        "${options[3]}") installSwitcheroo; sleep 3; break;;
-        "${options[4]}") installDefuse; sleep 3; break;;
-        "${options[5]}") installPipeline; sleep 3; break;;
+        "${options[3]}") installInkscape; sleep 3; break;;
+        "${options[4]}") installPixiEditor; sleep 3; break;;
+        "${options[5]}") installSwitcheroo; sleep 3; break;;
+        "${options[6]}") installDefuse; sleep 3; break;;
+        "${options[7]}") installPipeline; sleep 3; break;;
         "Back.") return;;
         *) echo -e "\e[36m[\e[31mERROR\e[36m] Invalid selection.\e[0m";
       esac

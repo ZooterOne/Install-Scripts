@@ -83,6 +83,20 @@ installPipeline()
   endCommandGroup "Install Pipeline"
 }
 
+installPixiEditor()
+{
+  startCommandGroup "Install PixiEditor"
+  flatpak install flathub net.pixieditor.PixiEditor -y
+  endCommandGroup "Install PixiEditor"
+}
+
+installInkscape()
+{
+  startCommandGroup "Install Inkscape"
+  flatpak install flathub org.inkscape.Inkscape -y
+  endCommandGroup "Install Inkscape"
+}
+
 #####################################################################
 # Virtualization software
 #####################################################################
